@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Rahmadika Surya Setiawan,S.Kom">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>SIAKAD PERGURUAN TUNAS HARAPAN</title>
+    <link rel="icon" href="https://smkth-jakbar.com/assets/images/logo.png">
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>assets/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

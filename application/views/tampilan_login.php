@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SMK Tunas Harapan</title>
+    <title>SIAKAD PERGURUAN TUNAS HARAPAN</title>
     <link rel="icon" href="https://smkth-jakbar.com/assets/images/logo.png">
 
     <!-- Custom fonts for this template-->

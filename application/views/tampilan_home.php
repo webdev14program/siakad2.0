@@ -2,7 +2,7 @@
     <div class="col-md">
         <div class="card bg-primary">
             <div class="card-body">
-                <h5 class="text-white font-weight-bold text-uppercase">siakad V2.0 perguruang tunas harapan jakarta barat (Admin UTAMA)</h5>
+                <h5 class="text-white font-weight-bold text-uppercase">siakad V2.0 perguruan tunas harapan jakarta barat (Admin UTAMA)</h5>
             </div>
         </div>
     </div>
@@ -12,32 +12,32 @@
         <div class="card bg-primary">
             <div class="card-body">
                 <h5 class="text-center text-uppercase text-white font-weight-bold">guru tk</h5>
-                <h5 class="text-center text-uppercase text-white font-weight-bold">0 guru </h5>
+                <h5 class="text-center text-uppercase text-white font-weight-bold"><?= $guru_tk ?> guru </h5>
             </div>
         </div>
     </div>
     <div class="col-md">
-        <div class="card bg-primary">
+        <div class="card bg-danger">
             <div class="card-body">
                 <h5 class="text-center text-uppercase text-white font-weight-bold">guru sd</h5>
-                <h5 class="text-center text-uppercase text-white font-weight-bold">0 guru </h5>
+                <h5 class="text-center text-uppercase text-white font-weight-bold"><?= $guru_sd ?> guru </h5>
             </div>
         </div>
     </div>
     <div class="col-md">
-        <div class="card bg-primary">
+        <div class="card bg-success">
             <div class="card-body">
                 <h5 class="text-center text-uppercase text-white font-weight-bold">guru smp</h5>
-                <h5 class="text-center text-uppercase text-white font-weight-bold">0 guru </h5>
+                <h5 class="text-center text-uppercase text-white font-weight-bold"><?= $guru_smp ?> guru </h5>
             </div>
         </div>
     </div>
 
     <div class="col-md">
-        <div class="card bg-primary">
+        <div class="card bg-warning">
             <div class="card-body">
                 <h5 class="text-center text-uppercase text-white font-weight-bold">guru sma</h5>
-                <h5 class="text-center text-uppercase text-white font-weight-bold">0 guru </h5>
+                <h5 class="text-center text-uppercase text-white font-weight-bold"><?= $guru_sma ?> guru </h5>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
         <div class="card bg-primary">
             <div class="card-body">
                 <h5 class="text-center text-uppercase text-white font-weight-bold">guru smk</h5>
-                <h5 class="text-center text-uppercase text-white font-weight-bold">0 guru </h5>
+                <h5 class="text-center text-uppercase text-white font-weight-bold"><?= $guru_smk ?> guru </h5>
             </div>
         </div>
     </div>
