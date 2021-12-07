@@ -40,19 +40,19 @@
                                         <h6><?php echo $no++; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['id']; ?></h6>
+                                        <h6 class="text-uppercase text-center"><?php echo $row['kode']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['nama']; ?></h6>
+                                        <h6 class="text-uppercase font-weight-bold"><?php echo $row['nama']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['guru']; ?></h6>
+                                        <h6 class="text-uppercase font-weight-bold"><?php echo $row['guru']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['jenis_guru']; ?></h6>
+                                        <h6 class="text-uppercase text-center font-weight-bold"><?php echo $row['jenis_guru']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['jenjang']; ?></h6>
+                                        <h6 class="text-uppercase text-center font-weight-bold"><?php echo $row['jenjang']; ?></h6>
                                     </td>
 
                             </tr>
