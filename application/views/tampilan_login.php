@@ -33,9 +33,9 @@
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="text-center mt-3">
+                        <div class="text-center mt-3 text-uppercase font-weight-bold ">
                             <h4>Sistem Informasi Akademik</h4>
-                            <h4>SMK Tunas Harapan</h4>
+                            <h4>perguruan swadharma tunas harapan</h4>
                         </div>
                         <div class="row">
                             <div class="col-lg-5 d-none d-lg-block">
