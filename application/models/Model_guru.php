@@ -42,7 +42,7 @@ class Model_guru extends CI_Model
         return $query->row()->guru_smk;
     }
 
-    public function DataGuruSMK()
+    public function DataGuru()
     {
         $sql = "SELECT * FROM `guru`";
         $query = $this->db->query($sql);

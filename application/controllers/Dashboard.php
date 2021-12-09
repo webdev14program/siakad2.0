@@ -20,9 +20,31 @@ class Dashboard extends CI_Controller
     public function master_guru()
     {
         $this->Model_keamanan->getKeamanan();
-        $isi['guru'] = $this->Model_guru->DataGuruSMK();
+        $isi['guru'] = $this->Model_guru->DataGuru();
 
         $isi['content'] = 'tampilan_master_guru';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function master_siswa()
+    {
+        $this->Model_keamanan->getKeamanan();
+        // $isi['guru'] = $this->Model_guru->DataGuruSMK();
+
+        $isi['content'] = 'tampilan_master_siswa';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function master_kelas()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['kelas'] = $this->Model_kelas->DataKelas();
+
+        $isi['content'] = 'tampilan_master_kelas';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');

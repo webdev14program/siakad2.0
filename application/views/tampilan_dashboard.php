@@ -5,7 +5,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard">
             <div class="sidebar-brand-text mx-3">ADMIN PUSAT</div>
         </a>
 
@@ -14,7 +14,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -37,8 +37,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Data Master</h6>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_guru">Master Guru</a>
-                    <a class="collapse-item" href="#">Master Siswa</a>
-                    <a class="collapse-item" href="#">Master Kelas</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
 
                 </div>
             </div>

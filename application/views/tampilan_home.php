@@ -2,7 +2,7 @@
     <div class="col-md">
         <div class="card bg-primary">
             <div class="card-body">
-                <h5 class="text-white font-weight-bold text-uppercase">siakad V2.0 perguruan tunas harapan jakarta barat (Admin UTAMA)</h5>
+                <h5 class="text-white font-weight-bold text-uppercase">siakad V2.0 perguruan tunas harapan swadharma (Admin UTAMA)</h5>
             </div>
         </div>
     </div>

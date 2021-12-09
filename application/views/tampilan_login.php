@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SIAKAD PERGURUAN TUNAS HARAPAN</title>
+    <title>SIAKAD PERGURUAN TUNAS HARAPAN SWADHARMA</title>
     <link rel="icon" href="https://smkth-jakbar.com/assets/images/logo.png">
 
     <!-- Custom fonts for this template-->
@@ -35,7 +35,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="text-center mt-3 text-uppercase font-weight-bold ">
                             <h4>Sistem Informasi Akademik</h4>
-                            <h4>perguruan swadharma tunas harapan</h4>
+                            <h4>perguruan tunas harapan swadharma</h4>
                         </div>
                         <div class="row">
                             <div class="col-lg-5 d-none d-lg-block">
