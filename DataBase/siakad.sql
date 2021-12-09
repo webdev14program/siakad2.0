@@ -1,0 +1,760 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 09, 2021 at 07:38 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `siakad`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absenguru`
+--
+
+CREATE TABLE `absenguru` (
+  `number` int(11) NOT NULL,
+  `kode` varchar(8) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ket` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `absenguru`
+--
+
+INSERT INTO `absenguru` (`number`, `kode`, `date`, `ket`) VALUES
+(1, 'Q', '2019-12-31 07:02:02', 'Masuk'),
+(2, 'Q', '2019-12-31 07:02:02', 'Keluar'),
+(4, 'B10', '2020-01-14 07:49:53', 'Keluar'),
+(5, 'B10', '2020-01-15 07:49:53', 'Keluar'),
+(6, 'B10', '2020-01-14 23:20:53', 'Masuk'),
+(7, 'B10', '2020-01-13 23:20:53', 'Masuk'),
+(8, 'S', '2020-01-06 12:18:15', 'Masuk'),
+(9, 'S', '2020-01-08 01:04:55', 'Keluar'),
+(11, 'B10', '2020-01-15 23:20:53', 'Masuk'),
+(12, 'B10', '2020-01-16 07:49:53', 'Keluar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `absensiswa`
+--
+
+CREATE TABLE `absensiswa` (
+  `number` int(11) NOT NULL,
+  `id` varchar(8) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `waktu` time NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `absensiswa`
+--
+
+INSERT INTO `absensiswa` (`number`, `id`, `date`, `waktu`, `status`) VALUES
+(1, '176474', '2019-12-10 13:27:59', '00:00:00', 'Masuk'),
+(2, '176474', '2019-12-10 13:27:59', '00:00:00', 'Masuk'),
+(3, '19227', '2019-12-29 07:04:12', '00:00:00', 'Masuk'),
+(4, '19227', '2019-12-29 07:04:12', '00:00:00', 'Masuk'),
+(5, '197223', '2019-12-29 23:53:57', '00:00:00', 'Masuk'),
+(6, '197223', '2019-12-29 23:53:57', '00:00:00', 'Masuk'),
+(7, '176476', '2019-12-30 00:29:57', '00:00:00', 'Masuk'),
+(8, '176476', '2019-12-30 00:29:57', '00:00:00', 'Masuk'),
+(9, '176477', '2019-12-30 00:49:32', '00:00:00', 'Masuk'),
+(10, '176477', '2019-12-30 00:49:32', '00:00:00', 'Masuk');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `auth`
+--
+
+CREATE TABLE `auth` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(256) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `level` enum('admin','kurikulum','guru','siswa','tu','guru') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `auth`
+--
+
+INSERT INTO `auth` (`id_user`, `username`, `password`, `nama`, `level`) VALUES
+(1, 'admin', '0192023a7bbd73250516f069df18b500', '', 'admin'),
+(2, 'kurikulum', '248e6e545ad791936c77a244bd8c000b', '', 'kurikulum');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guru`
+--
+
+CREATE TABLE `guru` (
+  `id` int(8) NOT NULL,
+  `kode` varchar(8) NOT NULL,
+  `nama` varchar(500) NOT NULL,
+  `guru` varchar(50) NOT NULL,
+  `jenis_guru` varchar(128) NOT NULL,
+  `jenjang` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `guru`
+--
+
+INSERT INTO `guru` (`id`, `kode`, `nama`, `guru`, `jenis_guru`, `jenjang`) VALUES
+(1, 'A', 'Widodo, SE,M.M', 'Kepala Sekolah', ' - ', 'SMK'),
+(2, 'B', 'Winartono, S.H', 'Staff TU', ' - ', 'SMK'),
+(3, 'C', 'Swiyono, SE', 'Wakasek Kesiswaan', 'Produktif BDP', 'SMK'),
+(4, 'D', 'Dini Chrisnawati,S.Pd ', 'Wakasek Kurikulum', 'Produktif AKL', 'SMK'),
+(5, 'E', 'Hary Puspitarini, M.Pd ', 'Wakasek Sarana Prasana', 'Umum', 'SMK'),
+(6, 'F', 'Irfan, S.Pd                       ', 'Ketua Prodi OTKP', 'Produktif OTKP', 'SMK'),
+(7, 'G', 'Vishnu Isvara, S. Kom ', 'Ketua Prodi TKJ', 'Produktif TKJ', 'SMK'),
+(8, 'H', 'Henri Wicaksono, S.E ', 'Ketua Prodi AKL', 'Produktif AKL', 'SMK'),
+(9, 'I', 'Nofa Aji Zatmiko, S.Pd ', 'Ketua Prodi BDP', 'Produktif BDP', 'SMK'),
+(10, 'J', 'Nurul Huda, S.Ag', 'Operator Sekolah', 'Umum', 'SMK'),
+(11, 'K', 'Eko, S.S', 'Guru', 'Umum', 'SMK'),
+(12, 'L', 'Sriyanti, S.Pd                 ', 'Guru', 'Produktif AKL', 'SMK'),
+(13, 'M', 'Ajizah Tri Lestari, S.Si  ', 'Guru', 'Umum', 'SMK'),
+(14, 'N', 'Istiqomah, S.Pd', 'Guru', 'Umum', 'SMK'),
+(15, 'O', 'Tugijono, S.Ag                ', 'Guru', 'Umum', 'SMK'),
+(16, 'P', 'Bambang Sumitro, S.Kom                              ', 'Guru', 'Produktif TKJ', 'SMK'),
+(17, 'Q', 'Gutser Siburian, S.Pd     ', 'Guru', 'Umum', 'SMK'),
+(18, 'R', 'Ugi Sistianto, S.Pd        ', 'Guru', 'Umum', 'SMK'),
+(19, 'S', 'Drs. Puji Waluyo, MM  ', 'Guru', 'Umum', 'SMK'),
+(20, 'T', 'Vevy Yurizal, S.Pd', 'Guru', 'Umum', 'SMK'),
+(21, 'U', 'Suhendi, S.Pd', 'Guru', 'Umum', 'SMK'),
+(22, 'V', 'Siswanto, M.Pd', 'Guru', 'Umum', 'SMK'),
+(23, 'W', 'Risma Harjanti                ', 'Guru', 'Umum', 'SMK'),
+(24, 'X', 'Winarno, S.Pd', 'Guru', 'Umum', 'SMK'),
+(25, 'Y', 'Yayah Syamsiah, M.Pd', 'Guru', 'Produktif BDP', 'SMK'),
+(26, 'Z', 'Maria Menge, M.Pd   ', 'Guru', 'Produktif BDP', 'SMK'),
+(27, 'A1', 'Yuliar Sutan, S.Pd', 'Guru', 'Umum', 'SMK'),
+(28, 'A2', 'Esa Fathonah, S.Pd', 'Guru', 'Umum', 'SMK'),
+(29, 'A3', 'Priyono, S.Pd', 'Guru', 'Produktif OTKP', 'SMK'),
+(30, 'A4', 'Yike Diana Syaputri,S.Pd', 'Guru', 'Umum', 'SMK'),
+(31, 'A5', 'Eka Tiara Wirahayu, S.Pd', 'Guru', 'Umum', 'SMK'),
+(32, 'A6', 'Khalisa Qatrunada, S.Ag', 'Guru', 'Umum', 'SMK'),
+(33, 'A7', 'Lely Lianasari, S.Pd', 'Guru', 'Produktif OTKP', 'SMK'),
+(34, 'A8', 'Eky Nurbani, S.Psi', 'Guru', 'Umum', 'SMK'),
+(35, 'A9', 'Usup Raharjo, A.Md', 'Guru', 'Produktif TKJ', 'SMK'),
+(36, 'A10', 'Mufidah, S.E', 'Guru', 'Produktif AKL', 'SMK'),
+(37, 'B1', 'Rahmadika Surya S.Kom                             ', 'Guru', 'Produktif TKJ', 'SMK'),
+(38, 'B2', 'Abu Amar A, S.Pd', 'Guru', 'Umum', 'SMK'),
+(39, 'B2', 'Rabella Tria P, S.Pd ', 'Guru', 'Produktif OTKP', 'SMK'),
+(40, 'B3', 'Dayanti Wisnu Wardani, S.Pd', 'Guru', 'Produktif AKL', 'SMK'),
+(41, 'B4', 'Siti Maryam, S.Pd          ', 'Guru', 'Produktif BDP', 'SMK'),
+(42, 'B5', 'Steven James, S.Kom', 'Guru', 'Produktif TKJ', 'SMK'),
+(43, 'B6', 'Tyas Ayu Maharani', 'Guru', 'Umum', 'SMK'),
+(44, 'B7', 'Novia Putri Yude, S.Pd', 'Guru', 'Umum', 'SMK'),
+(45, 'B8', 'Adilah Widiasti, S.Kom', 'Guru', 'Produktif TKJ', 'SMK'),
+(46, 'T1', 'Danang', 'Teknisi', 'Produktif TKJ', 'SMK'),
+(47, 'T2', 'Marcellino Raditio', 'Teknisi', 'Produktif TKJ', 'SMK'),
+(48, 'T3', 'Andika', 'Teknisi', 'Produktif TKJ', 'SMK'),
+(49, 'T4', 'Shaine Stark, S.Pd', 'Kepala Sekolah', 'Umum', 'SMP'),
+(50, 'T5', 'Colby Rosales, S.Pd', 'Guru', 'Umum', 'SMP'),
+(51, 'T6', 'Scott Osborne, S.Pd', 'Guru', 'Umum', 'SMP'),
+(52, 'T7', 'Justin Vinson, S.Pd', 'Guru', 'Umum', 'SMP'),
+(53, 'T8', 'Nell Wolf, S.Pd', 'Guru', 'Umum', 'SMP'),
+(54, 'T9', 'Hilda Rivas, S.Pd', 'Guru', 'Umum', 'SMP'),
+(55, 'T10', 'Ayanna Hebert, S.Pd', 'Kepala Sekolah', 'Umum', 'SD'),
+(56, 'T11', 'Hamilton Levy, S.Pd', 'Guru', 'Umum', 'SD'),
+(57, 'T12', 'Gay Wilkerson, S.Pd', 'Guru', 'Umum', 'SD'),
+(58, 'T13', 'Lois Graham, S.Pd', 'Kepala Sekolah', 'Umum', 'TK'),
+(59, 'T14', 'Fuller Webb, S.Pd', 'Guru', 'Umum', 'TK'),
+(60, 'T15', 'Lamar Bowman, S.Pd', 'Guru', 'Umum', 'TK'),
+(61, 'T16', 'Ulysses Carrillo, S.Pd', 'Guru', 'Umum', 'TK'),
+(62, 'T17', 'Nissim Short, S.Pd', 'Kepala Sekolah', 'Umum', 'SMA'),
+(63, 'T18', 'Ciara Ingram, S.Pd', 'Guru', 'Umum', 'SMA'),
+(64, 'T19', 'Avram Hamilton, S.Pd', 'Guru', 'Umum', 'SMA'),
+(65, 'T20', 'Hedda Mayo, S.Pd', 'Guru', 'Umum', 'SMA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jurusan`
+--
+
+CREATE TABLE `jurusan` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(8) NOT NULL,
+  `jurusan` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jurusan`
+--
+
+INSERT INTO `jurusan` (`id`, `kode`, `jurusan`) VALUES
+(101, 'AKL', 'AKUTANSI KEUANGAN LEMBAGA'),
+(202, 'BDP', 'BISNIS DARING PEMASARAN'),
+(303, 'OTKP', 'OTOMATISASI TATA KELOLA PERKANTORAN'),
+(404, 'TKJ', 'TEKNIK KOMPUTER DAN JARINGAN');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(8) NOT NULL,
+  `kelas` varchar(128) NOT NULL,
+  `jenjang` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
+(101853, 'AKL', 'X AKL 1', 'SMK'),
+(102700, 'AKL', 'X AKL 2', 'SMK'),
+(103409, 'BDP', 'X BDP 1', 'SMK'),
+(105376, 'OTKP', 'X OTKP 1', 'SMK'),
+(106899, 'OTKP', 'X OTKP 2', 'SMK'),
+(107123, 'TKJ', 'X TKJ 1', 'SMK'),
+(108155, 'TKJ', 'X TKJ 2', 'SMK'),
+(109807, 'TKJ', 'X TKJ 3', 'SMK'),
+(110599, 'AKL', 'XI AKL 1', 'SMK'),
+(111546, 'AKL', 'XI AKL 2', 'SMK'),
+(112625, 'BDP', 'XI BDP 1', 'SMK'),
+(113182, 'BDP', 'XI BDP 2', 'SMK'),
+(114382, 'OTKP', 'XI OTKP 1', 'SMK'),
+(115353, 'OTKP', 'XI OTKP 2', 'SMK'),
+(116953, 'TKJ', 'XI TKJ 1', 'SMK'),
+(117204, 'TKJ', 'XI TKJ 2', 'SMK'),
+(118862, 'TKJ', 'XI TKJ 3', 'SMK'),
+(119717, 'AKL', 'XII AKL 1', 'SMK'),
+(120675, 'AKL', 'XII AKL 2', 'SMK'),
+(121465, 'BDP', 'XII BDP 1', 'SMK'),
+(122273, 'BDP', 'XII BDP 2', 'SMK'),
+(123710, 'OTKP', 'XII OTKP 1', 'SMK'),
+(124270, 'OTKP', 'XII OTKP 2', 'SMK'),
+(125353, 'TKJ', 'XII TKJ 1', 'SMK'),
+(126854, 'TKJ', 'XII TKJ 2', 'SMK'),
+(127374, 'TKJ', 'XII TKJ 3', 'SMK'),
+(128456, 'X SMA', 'X IPA 1', 'SMA'),
+(129425, 'X SMA', 'X IPA 2', 'SMA'),
+(130253, 'X SMA', 'X IPS 1', 'SMA'),
+(131466, 'X SMA', 'X IPS 2', 'SMA'),
+(132126, 'XI SMA', 'XI IPA 1', 'SMA'),
+(133372, 'XI SMA', 'XI IPA 2', 'SMA'),
+(134494, 'XI SMA', 'XI IPS 1', 'SMA'),
+(135562, 'XI SMA', 'XI IPS 2', 'SMA'),
+(136529, 'XII SMA', 'XII IPA 1', 'SMA'),
+(137649, 'XII SMA', 'XII IPA 2', 'SMA'),
+(138283, 'XII SMA', 'XII IPS 1', 'SMA'),
+(139727, 'XII SMA', 'XII IPS 2', 'SMA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mapel`
+--
+
+CREATE TABLE `mapel` (
+  `id_mapel` int(18) NOT NULL,
+  `nama_mapel` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mapel`
+--
+
+INSERT INTO `mapel` (`id_mapel`, `nama_mapel`) VALUES
+(104177, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII AKL 1)'),
+(104181, 'BAHASA INDONESIA (XII AKL 2)'),
+(106438, 'BAHASA MANDARIN (XII TKJ 1)'),
+(108225, 'MATEMATIKA (XI BDP 2)'),
+(108407, 'PENDIDIKAN AGAMA KRISTEN (XI TKJ 2)'),
+(109115, 'ETIKA PROFESI (X AKL 1)'),
+(123276, 'PENDIDIKAN AGAMA KRISTEN (X OTKP 2)'),
+(124241, 'PENATAAN PRODUK (XII BDP 1)'),
+(126129, 'SIMULASI DAN KOMUNIKASI DIGITAL (X AKL 2)'),
+(126421, 'PPKN (XI TKJ 3)'),
+(131261, 'BAHASA INDONESIA (X OTKP 1)'),
+(134328, 'OTK HUMAS DAN KEPROTOKOLAN (XII OTKP 1)'),
+(136228, 'PJOK (XI BDP 2)'),
+(137249, 'BAHASA INDONESIA (XII BDP 2)'),
+(149139, 'PPKN (XI AKL 1)'),
+(150336, 'BAHASA MANDARIN (XII OTKP 2)'),
+(151322, 'MATEMATIKA (XII OTKP 1)'),
+(152291, 'KEARSIPAN (X OTKP 2)'),
+(152394, 'PENDIDIKAN AGAMA KRISTEN (XI TKJ 1)'),
+(155119, 'PENDIDIKAN AGAMA ISLAM (X AKL 2)'),
+(155378, 'PPKN (X TKJ 3)'),
+(155390, 'KOMPUTER DAN JARINGAN DASAR (X TKJ 3)'),
+(158259, 'PENDIDIKAN AGAMA KRISTEN (X OTKP 1)'),
+(168403, 'ADMINISTRASI SISTEM JARINGAN (XI TKJ 1)'),
+(171171, 'BAHASA MANDARIN (XII AKL 1)'),
+(171214, 'BAHASA MANDARIN (XI BDP 1)'),
+(173302, 'OTK SARANA DAN PRASARANA (XI OTKP 1)'),
+(175114, 'IPA (X AKL 1)'),
+(175155, 'MATEMATIKA (XI AKL 2)'),
+(176413, 'PJOK (XI TKJ 2)'),
+(177102, 'PENDIDIKAN AGAMA KRISTEN (X AKL 1)'),
+(180432, 'PENDIDIKAN AGAMA ISLAM (XII TKJ 1)'),
+(184450, 'ADMINISTRASI INFRASTRUKTUR JARINGAN (XII TKJ 2)'),
+(186131, 'ADMINISTRASI UMUM (X AKL 2)'),
+(186332, 'PPKN (XII OTKP 2)'),
+(187199, 'SENI BUDAYA (X BDP 1)'),
+(191311, 'BAHASA MANDARIN (XI OTKP 2)'),
+(193196, 'SEJARAH INDONESIA (X BDP 1)'),
+(197179, 'PENDIDIKAN AGAMA KRISTEN (XII AKL 2)'),
+(202161, 'AKUNTANSI KEUANGAN (XI AKL 2)'),
+(202227, 'BAHASA MANDARIN (XI BDP 2)'),
+(209430, 'TEKNOLOGI LAYANAN JARINGAN (XI TKJ 3)'),
+(211411, 'BAHASA INGGRIS (XI TKJ 2)'),
+(215232, 'ADMINISTRASI TRANSAKSI (XI BDP 2)'),
+(223387, 'FISIKA (X TKJ 3)'),
+(224239, 'BAHASA INGGRIS (XII BDP 1)'),
+(226148, 'KOMPUTER AKUNTANSI (XI AKL 1)'),
+(228415, 'ADMINISTRASI INFRASTRUKTUR JARINGAN (XI TKJ 2)'),
+(232417, 'TEKNOLOGI LAYANAN JARINGAN (XI TKJ 2)'),
+(232420, 'PENDIDIKAN AGAMA KRISTEN (XI TKJ 3)'),
+(233285, 'SIMULASI DAN KOMUNIKASI DIGITAL (X OTKP 2)'),
+(234347, 'SEJARAH INDONESIA (X TKJ 1)'),
+(237395, 'PPKN (XI TKJ 1)'),
+(238258, 'PENDIDIKAN AGAMA ISLAM (X OTKP 1)'),
+(240123, 'MATEMATIKA (X AKL 2)'),
+(245174, 'AKUNTANSI KEUANGAN (XII AKL 1)'),
+(245399, 'BAHASA MANDARIN (XI TKJ 1)'),
+(246182, 'MATEMATIKA (XII AKL 2)'),
+(253142, 'BAHASA INGGRIS (XI AKL 1)'),
+(260331, 'PENDIDIKAN AGAMA KRISTEN (XII OTKP 2)'),
+(261138, 'PENDIDIKAN AGAMA KRISTEN (XI AKL 1)'),
+(266357, 'PEMROGRAMAN DASAR (X TKJ 1)'),
+(267216, 'PENATAAN PRODUK (XI BDP 1)'),
+(269248, 'PPKN (XII BDP 2)'),
+(270149, 'ADMINISTRASI PAJAK (XI AKL 1)'),
+(277201, 'SIMULASI DAN KOMUNIKASI DIGITAL (X BDP 1)'),
+(277251, 'BAHASA INGGRIS (XII BDP 2)'),
+(278136, 'PERBANKAN DASAR (X AKL 2)'),
+(279456, 'PPKN (XII TKJ 3)'),
+(280250, 'MATEMATIKA (XII BDP 2)'),
+(283452, 'TEKNOLOGI LAYANAN JARINGAN (XII TKJ 2)'),
+(290344, 'PPKN (X TKJ 1)'),
+(292443, 'PENDIDIKAN AGAMA ISLAM (XII TKJ 2)'),
+(293237, 'BAHASA INDONESIA (XII BDP 1)'),
+(294340, 'OTK HUMAS DAN KEPROTOKOLAN (XII OTKP 2)'),
+(294343, 'PENDIDIKAN AGAMA KRISTEN (X TKJ 1)'),
+(296392, 'DASAR DESAIN GRAFIS (X TKJ 3)'),
+(297370, 'FISIKA (X TKJ 2)'),
+(299434, 'PPKN (XII TKJ 1)'),
+(300220, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI BDP 1)'),
+(300255, 'PENGELOLAAN BISNIS RITEL (XII BDP 2)'),
+(303424, 'BAHASA INGGRIS (XI TKJ 3)'),
+(310116, 'SPREADSHEET (X AKL 1)'),
+(312169, 'MATEMATIKA (XII AKL 1)'),
+(313439, 'ADMINISTRASI INFRASTRUKTUR JARINGAN (XII TKJ 1)'),
+(314444, 'PENDIDIKAN AGAMA KRISTEN (XII TKJ 2)'),
+(315257, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII BDP 2)'),
+(318293, 'PENDIDIKAN AGAMA KRISTEN (XI OTKP 1)'),
+(323369, 'SIMULASI DAN KOMUNIKASI DIGITAL (X TKJ 2)'),
+(323441, 'TEKNOLOGI LAYANAN JARINGAN (XII TKJ 1)'),
+(339334, 'MATEMATIKA (XII OTKP 2)'),
+(342419, 'PENDIDIKAN AGAMA ISLAM (XI TKJ 3)'),
+(345178, 'PENDIDIKAN AGAMA ISLAM (XII AKL 2)'),
+(351159, 'PRAKTIKUM AK PERUSAHAAN JASA, DAGANG, DAN MANUFAKTUR (XI AKL 2)'),
+(354184, 'BAHASA MANDARIN (XII AKL 2)'),
+(357254, 'BISNIS ONLINE (XII BDP 2)'),
+(358238, 'MATEMATIKA (XII BDP 1)'),
+(359305, 'PENDIDIKAN AGAMA ISLAM (XI OTKP 2)'),
+(360244, 'ADMINISTRASI TRANSAKSI (XII BDP 1)'),
+(361313, 'OTK KEPEGAWAIAN (XI OTKP 2)'),
+(362371, 'KIMIA (X TKJ 2)'),
+(366350, 'SENI BUDAYA (X TKJ 1)'),
+(367268, 'SIMULASI DAN KOMUNIKASI DIGITAL (X OTKP 1)'),
+(367437, 'BAHASA INGGRIS (XII TKJ 1)'),
+(372284, 'PJOK (X OTKP 2)'),
+(373338, 'OTK KEUANGAN (XII OTKP 2)'),
+(374333, 'BAHASA INDONESIA (XII OTKP 2)'),
+(377246, 'PENDIDIKAN AGAMA ISLAM (XII BDP 2)'),
+(381355, 'SISTEM KOMPUTER (X TKJ 1)'),
+(381365, 'BAHASA INGGRIS (X TKJ 2)'),
+(383110, 'PJOK (X AKL 1)'),
+(384310, 'BAHASA INGGRIS (XI OTKP 2)'),
+(384428, 'ADMINISTRASI INFRASTRUKTUR JARINGAN (XI TKJ 3)'),
+(391135, 'AKUNTANSI DASAR (X AKL 2)'),
+(393275, 'PENDIDIKAN AGAMA ISLAM (X OTKP 2)'),
+(395213, 'BAHASA INGGRIS (XI BDP 1)'),
+(397384, 'SENI BUDAYA (X TKJ 3)'),
+(400402, 'ADMINISTRASI INFRASTRUKTUR JARINGAN (XI TKJ 1)'),
+(408401, 'TEKNOLOGI JARINGAN BERBASIS LUAS (WAN) (XI TKJ 1)'),
+(409202, 'EKONOMI BISNIS (X BDP 1)'),
+(410273, 'KORESPONDENSI (X OTKP 1)'),
+(415190, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII AKL 2)'),
+(418104, 'BAHASA INDONESIA (X AKL 1)'),
+(425349, 'BAHASA MANDARIN (X TKJ 1)'),
+(426143, 'BAHASA MANDARIN (XI AKL 1)'),
+(426189, 'ADMINISTRASI PAJAK (XII AKL 2)'),
+(436375, 'DASAR DESAIN GRAFIS (X TKJ 2)'),
+(439292, 'PENDIDIKAN AGAMA ISLAM (XI OTKP 1)'),
+(441147, 'AKUNTANSI KEUANGAN (XI AKL 1)'),
+(441386, 'SIMULASI DAN KOMUNIKASI DIGITAL (X TKJ 3)'),
+(442425, 'BAHASA MANDARIN (XI TKJ 3)'),
+(445312, 'PJOK (XI OTKP 2)'),
+(446231, 'PENGELOLAAN BISNIS RITEL (XI BDP 2)'),
+(449323, 'BAHASA INGGRIS (XII OTKP 1)'),
+(449435, 'BAHASA INDONESIA (XII TKJ 1)'),
+(456242, 'BISNIS ONLINE (XII BDP 1)'),
+(457126, 'BAHASA MANDARIN (X AKL 2)'),
+(457324, 'BAHASA MANDARIN (XII OTKP 1)'),
+(461307, 'PPKN (XI OTKP 2)'),
+(464230, 'BISNIS ONLINE (XI BDP 2)'),
+(464398, 'BAHASA INGGRIS (XI TKJ 1)'),
+(477127, 'SENI BUDAYA (X AKL 2)'),
+(482303, 'OTK HUMAS DAN KEPROTOKOLAN (XI OTKP 1)'),
+(482320, 'PPKN (XII OTKP 1)'),
+(485440, 'ADMINISTRASI SISTEM JARINGAN (XII TKJ 1)'),
+(486374, 'PEMROGRAMAN DASAR (X TKJ 2)'),
+(489247, 'PENDIDIKAN AGAMA KRISTEN (XII BDP 2)'),
+(491150, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI AKL 1)'),
+(491219, 'ADMINISTRASI TRANSAKSI (XI BDP 1)'),
+(493120, 'PENDIDIKAN AGAMA KRISTEN (X AKL 2)'),
+(493172, 'PRAKTIKUM AK PERUSAHAAN JASA, DAGANG, DAN MANUFAKTUR (XII AKL 1)'),
+(493287, 'ADMINISTRASI UMUM (X OTKP 2)'),
+(498341, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII OTKP 2)'),
+(503426, 'PJOK (XI TKJ 3)'),
+(504405, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI TKJ 1)'),
+(506141, 'MATEMATIKA (XI AKL 1)'),
+(506206, 'PERENCANAAN BISNIS (X BDP 1)'),
+(507191, 'PENDIDIKAN AGAMA ISLAM (X BDP 1)'),
+(507445, 'PPKN (XII TKJ 2)'),
+(510167, 'PPKN (XII AKL 1)'),
+(510296, 'MATEMATIKA (XI OTKP 1)'),
+(514361, 'PPKN (X TKJ 2)'),
+(529282, 'BAHASA MANDARIN (X OTKP 2)'),
+(531229, 'PENATAAN PRODUK (XI BDP 2)'),
+(536122, 'BAHASA INDONESIA (X AKL 2)'),
+(539372, 'SISTEM KOMPUTER (X TKJ 2)'),
+(543210, 'PPKN (XI BDP 1)'),
+(545455, 'PENDIDIKAN AGAMA KRISTEN (XII TKJ 3)'),
+(550449, 'BAHASA MANDARIN (XII TKJ 2)'),
+(553222, 'PENDIDIKAN AGAMA KRISTEN (XI BDP 2)'),
+(556106, 'SEJARAH INDONESIA (X AKL 1)'),
+(556319, 'PENDIDIKAN AGAMA KRISTEN (XII OTKP 1)'),
+(558442, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII TKJ 1)'),
+(559304, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI OTKP 1)'),
+(562158, 'PJOK (XI AKL 2)'),
+(563132, 'IPA (X AKL 2)'),
+(566146, 'PRAKTIKUM AK LEMBAGA (XI AKL 1)'),
+(566170, 'BAHASA INGGRIS (XII AKL 1)'),
+(569423, 'MATEMATIKA (XI TKJ 3)'),
+(572245, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII BDP 1)'),
+(573346, 'MATEMATIKA (X TKJ 1)'),
+(573383, 'BAHASA MANDARIN (X TKJ 3)'),
+(575113, 'ADMINISTRASI UMUM (X AKL 1)'),
+(576379, 'BAHASA INDONESIA (X TKJ 3)'),
+(578382, 'BAHASA INGGRIS (X TKJ 3)'),
+(582337, 'OTK KEPEGAWAIAN (XII OTKP 2)'),
+(584253, 'PENATAAN PRODUK (XII BDP 2)'),
+(585166, 'PENDIDIKAN AGAMA KRISTEN (XII AKL 1)'),
+(586134, 'SPREADSHEET (X AKL 2)'),
+(587309, 'MATEMATIKA (XI OTKP 2)'),
+(590460, 'BAHASA MANDARIN (XII TKJ 3)'),
+(591364, 'SEJARAH INDONESIA (X TKJ 2)'),
+(594348, 'BAHASA INGGRIS (X TKJ 1)'),
+(595217, 'BISNIS ONLINE (XI BDP 1)'),
+(597263, 'SEJARAH INDONESIA (X OTKP 1)'),
+(599128, 'PJOK (X AKL 2)'),
+(599283, 'SENI BUDAYA (X OTKP 2)'),
+(606281, 'BAHASA INGGRIS (X OTKP 2)'),
+(606404, 'TEKNOLOGI LAYANAN JARINGAN (XI TKJ 1)'),
+(607269, 'EKONOMI BISNIS (X OTKP 1)'),
+(611351, 'PJOK (X TKJ 1)'),
+(614205, 'MARKETING (X BDP 1)'),
+(614243, 'PENGELOLAAN BISNIS RITEL (XII BDP 1)'),
+(615111, 'SIMULASI DAN KOMUNIKASI DIGITAL (X AKL 1)'),
+(616218, 'PENGELOLAAN BISNIS RITEL (XI BDP 1)'),
+(620204, 'IPA (X BDP 1)'),
+(623459, 'BAHASA INGGRIS (XII TKJ 3)'),
+(624400, 'PJOK (XI TKJ 1)'),
+(627264, 'BAHASA INGGRIS (X OTKP 1)'),
+(632260, 'PPKN (X OTKP 1)'),
+(633117, 'AKUNTANSI DASAR (X AKL 1)'),
+(641211, 'BAHASA INDONESIA (XI BDP 1)'),
+(641429, 'ADMINISTRASI SISTEM JARINGAN (XI TKJ 3)'),
+(652125, 'BAHASA INGGRIS (X AKL 2)'),
+(653274, 'KEARSIPAN (X OTKP 1)'),
+(657107, 'BAHASA INGGRIS (X AKL 1)'),
+(657152, 'PENDIDIKAN AGAMA KRISTEN (XI AKL 2)'),
+(659356, 'KOMPUTER DAN JARINGAN DASAR (X TKJ 1)'),
+(663103, 'PPKN (X AKL 1)'),
+(663112, 'EKONOMI BISNIS (X AKL 1)'),
+(669187, 'AKUNTANSI KEUANGAN (XII AKL 2)'),
+(673448, 'BAHASA INGGRIS (XII TKJ 2)'),
+(678157, 'BAHASA MANDARIN (XI AKL 2)'),
+(682461, 'ADMINISTRASI INFRASTRUKTUR JARINGAN (XII TKJ 3)'),
+(687360, 'PENDIDIKAN AGAMA KRISTEN (X TKJ 2)'),
+(688381, 'SEJARAH INDONESIA (X TKJ 3)'),
+(690325, 'OTK KEPEGAWAIAN (XII OTKP 1)'),
+(693175, 'KOMPUTER AKUNTANSI (XII AKL 1)'),
+(695265, 'BAHASA MANDARIN (X OTKP 1)'),
+(695367, 'SENI BUDAYA (X TKJ 2)'),
+(695454, 'PENDIDIKAN AGAMA ISLAM (XII TKJ 3)'),
+(697224, 'BAHASA INDONESIA (XI BDP 2)'),
+(698288, 'IPA (X OTKP 2)'),
+(698408, 'PPKN (XI TKJ 2)'),
+(699234, 'PENDIDIKAN AGAMA ISLAM (XII BDP 1)'),
+(701194, 'BAHASA INDONESIA (X BDP 1)'),
+(703198, 'BAHASA MANDARIN (X BDP 1)'),
+(703431, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI TKJ 3)'),
+(704295, 'BAHASA INDONESIA (XI OTKP 1)'),
+(704406, 'PENDIDIKAN AGAMA ISLAM (XI TKJ 2)'),
+(706270, 'ADMINISTRASI UMUM (X OTKP 1)'),
+(714209, 'PENDIDIKAN AGAMA KRISTEN (XI BDP 1)'),
+(716447, 'MATEMATIKA (XII TKJ 2)'),
+(720195, 'MATEMATIKA (X BDP 1)'),
+(724156, 'BAHASA INGGRIS (XI AKL 2)'),
+(730153, 'PPKN (XI AKL 2)'),
+(732368, 'PJOK (X TKJ 2)'),
+(733193, 'PPKN (X BDP 1)'),
+(735377, 'PENDIDIKAN AGAMA KRISTEN (X TKJ 3)'),
+(736410, 'MATEMATIKA (XI TKJ 2)'),
+(738393, 'PENDIDIKAN AGAMA ISLAM (XI TKJ 1)'),
+(738412, 'BAHASA MANDARIN (XI TKJ 2)'),
+(743353, 'FISIKA (X TKJ 1)'),
+(748154, 'BAHASA INDONESIA (XI AKL 2)'),
+(756397, 'MATEMATIKA (XI TKJ 1)'),
+(756458, 'MATEMATIKA (XII TKJ 3)'),
+(763124, 'SEJARAH INDONESIA (X AKL 2)'),
+(763140, 'BAHASA INDONESIA (XI AKL 1)'),
+(764321, 'BAHASA INDONESIA (XII OTKP 1)'),
+(765267, 'PJOK (X OTKP 1)'),
+(767168, 'BAHASA INDONESIA (XII AKL 1)'),
+(767339, 'OTK SARANA DAN PRASARANA (XII OTKP 2)'),
+(768380, 'MATEMATIKA (X TKJ 3)'),
+(769215, 'PJOK (XI BDP 1)'),
+(769226, 'BAHASA INGGRIS (XI BDP 2)'),
+(773314, 'OTK KEUANGAN (XI OTKP 2)'),
+(779299, 'PJOK (XI OTKP 1)'),
+(782446, 'BAHASA INDONESIA (XII TKJ 2)'),
+(785359, 'PENDIDIKAN AGAMA ISLAM (X TKJ 2)'),
+(787345, 'BAHASA INDONESIA (X TKJ 1)'),
+(788163, 'ADMINISTRASI PAJAK (XI AKL 2)'),
+(788358, 'DASAR DESAIN GRAFIS (X TKJ 1)'),
+(797330, 'PENDIDIKAN AGAMA ISLAM (XII OTKP 2)'),
+(800130, 'EKONOMI BISNIS (X AKL 2)'),
+(802294, 'PPKN (XI OTKP 1)'),
+(803192, 'PENDIDIKAN AGAMA KRISTEN (X BDP 1)'),
+(805427, 'TEKNOLOGI JARINGAN BERBASIS LUAS (WAN) (XI TKJ 3)'),
+(806118, 'PERBANKAN DASAR (X AKL 1)'),
+(807173, 'PRAKTIKUM AK LEMBAGA (XII AKL 1)'),
+(809160, 'PRAKTIKUM AK LEMBAGA (XI AKL 2)'),
+(810352, 'SIMULASI DAN KOMUNIKASI DIGITAL (X TKJ 1)'),
+(811203, 'ADMINISTRASI UMUM (X BDP 1)'),
+(814290, 'KORESPONDENSI (X OTKP 2)'),
+(814385, 'PJOK (X TKJ 3)'),
+(814464, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII TKJ 3)'),
+(817279, 'MATEMATIKA (X OTKP 2)'),
+(818329, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII OTKP 1)'),
+(819315, 'OTK SARANA DAN PRASARANA (XI OTKP 2)'),
+(822289, 'TEKNOLOGI PERKANTORAN (X OTKP 2)'),
+(825252, 'BAHASA MANDARIN (XII BDP 2)'),
+(826186, 'PRAKTIKUM AK LEMBAGA (XII AKL 2)'),
+(827462, 'ADMINISTRASI SISTEM JARINGAN (XII TKJ 3)'),
+(830197, 'BAHASA INGGRIS (X BDP 1)'),
+(831286, 'EKONOMI BISNIS (X OTKP 2)'),
+(834185, 'PRAKTIKUM AK PERUSAHAAN JASA, DAGANG, DAN MANUFAKTUR (XII AKL 2)'),
+(839280, 'SEJARAH INDONESIA (X OTKP 2)'),
+(850363, 'MATEMATIKA (X TKJ 2)'),
+(855236, 'PPKN (XII BDP 1)'),
+(862308, 'BAHASA INDONESIA (XI OTKP 2)'),
+(864235, 'PENDIDIKAN AGAMA KRISTEN (XII BDP 1)'),
+(866418, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI TKJ 2)'),
+(867376, 'PENDIDIKAN AGAMA ISLAM (X TKJ 3)'),
+(871162, 'KOMPUTER AKUNTANSI (XI AKL 2)'),
+(875277, 'PPKN (X OTKP 2)'),
+(877208, 'PENDIDIKAN AGAMA ISLAM (XI BDP 1)'),
+(877354, 'KIMIA (X TKJ 1)'),
+(879373, 'KOMPUTER DAN JARINGAN DASAR (X TKJ 2)'),
+(880121, 'PPKN (X AKL 2)'),
+(881416, 'ADMINISTRASI SISTEM JARINGAN (XI TKJ 2)'),
+(882388, 'KIMIA (X TKJ 3)'),
+(884165, 'PENDIDIKAN AGAMA ISLAM (XII AKL 1)'),
+(886271, 'IPA (X OTKP 1)'),
+(886278, 'BAHASA INDONESIA (X OTKP 2)'),
+(887414, 'TEKNOLOGI JARINGAN BERBASIS LUAS (WAN) (XI TKJ 2)'),
+(887422, 'BAHASA INDONESIA (XI TKJ 3)'),
+(890188, 'KOMPUTER AKUNTANSI (XII AKL 2)'),
+(891436, 'MATEMATIKA (XII TKJ 1)'),
+(894133, 'ETIKA PROFESI (X AKL 2)'),
+(894453, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XII TKJ 2)'),
+(895105, 'MATEMATIKA (X AKL 1)'),
+(897316, 'OTK HUMAS DAN KEPROTOKOLAN (XI OTKP 2)'),
+(900183, 'BAHASA INGGRIS (XII AKL 2)'),
+(900342, 'PENDIDIKAN AGAMA ISLAM (X TKJ 1)'),
+(905180, 'PPKN (XII AKL 2)'),
+(906335, 'BAHASA INGGRIS (XII OTKP 2)'),
+(910144, 'PJOK (XI AKL 1)'),
+(916326, 'OTK KEUANGAN (XII OTKP 1)'),
+(917433, 'PENDIDIKAN AGAMA KRISTEN (XII TKJ 1)'),
+(922109, 'SENI BUDAYA (X AKL 1)'),
+(922223, 'PPKN (XI BDP 2)'),
+(922297, 'BAHASA INGGRIS (XI OTKP 1)'),
+(922301, 'OTK KEUANGAN (XI OTKP 1)'),
+(929366, 'BAHASA MANDARIN (X TKJ 2)'),
+(934463, 'TEKNOLOGI LAYANAN JARINGAN (XII TKJ 3)'),
+(935391, 'PEMROGRAMAN DASAR (X TKJ 3)'),
+(936396, 'BAHASA INDONESIA (XI TKJ 1)'),
+(939207, 'KOMUNIKASI BISNIS (X BDP 1)'),
+(940137, 'PENDIDIKAN AGAMA ISLAM (XI AKL 1)'),
+(941176, 'ADMINISTRASI PAJAK (XII AKL 1)'),
+(947101, 'PENDIDIKAN AGAMA ISLAM (X AKL 1)'),
+(950272, 'TEKNOLOGI PERKANTORAN (X OTKP 1)'),
+(955151, 'PENDIDIKAN AGAMA ISLAM (XI AKL 2)'),
+(955256, 'ADMINISTRASI TRANSAKSI (XII BDP 2)'),
+(962300, 'OTK KEPEGAWAIAN (XI OTKP 1)'),
+(966389, 'SISTEM KOMPUTER (X TKJ 3)'),
+(969409, 'BAHASA INDONESIA (XI TKJ 2)'),
+(971145, 'PRAKTIKUM AK PERUSAHAAN JASA, DAGANG, DAN MANUFAKTUR (XI AKL 1)'),
+(971266, 'SENI BUDAYA (X OTKP 1)'),
+(972298, 'BAHASA MANDARIN (XI OTKP 1)'),
+(973362, 'BAHASA INDONESIA (X TKJ 2)'),
+(975221, 'PENDIDIKAN AGAMA ISLAM (XI BDP 2)'),
+(978200, 'PJOK (X BDP 1)'),
+(978457, 'BAHASA INDONESIA (XII TKJ 3)'),
+(979327, 'OTK SARANA DAN PRASARANA (XII OTKP 1)'),
+(983233, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI BDP 2)'),
+(986164, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI AKL 2)'),
+(987318, 'PENDIDIKAN AGAMA ISLAM (XII OTKP 1)'),
+(990240, 'BAHASA MANDARIN (XII BDP 1)'),
+(991212, 'MATEMATIKA (XI BDP 1)'),
+(991317, 'PRODUK KREATIF DAN KEWIRAUSAHAAN (XI OTKP 2)'),
+(992306, 'PENDIDIKAN AGAMA KRISTEN (XI OTKP 2)'),
+(995108, 'BAHASA MANDARIN (X AKL 1)'),
+(996451, 'ADMINISTRASI SISTEM JARINGAN (XII TKJ 2)'),
+(999262, 'MATEMATIKA (X OTKP 1)');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `id` int(11) NOT NULL,
+  `nama_siswa` varchar(512) NOT NULL,
+  `kelas` varchar(16) NOT NULL,
+  `jurusan` varchar(8) NOT NULL,
+  `jenjang` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `absenguru`
+--
+ALTER TABLE `absenguru`
+  ADD PRIMARY KEY (`number`);
+
+--
+-- Indexes for table `absensiswa`
+--
+ALTER TABLE `absensiswa`
+  ADD PRIMARY KEY (`number`);
+
+--
+-- Indexes for table `auth`
+--
+ALTER TABLE `auth`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `guru`
+--
+ALTER TABLE `guru`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `mapel`
+--
+ALTER TABLE `mapel`
+  ADD PRIMARY KEY (`id_mapel`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `absenguru`
+--
+ALTER TABLE `absenguru`
+  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `absensiswa`
+--
+ALTER TABLE `absensiswa`
+  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `auth`
+--
+ALTER TABLE `auth`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `guru`
+--
+ALTER TABLE `guru`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `jurusan`
+--
+ALTER TABLE `jurusan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=429;
+
+--
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139728;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
