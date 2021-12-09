@@ -166,8 +166,8 @@
         <footer class="sticky-footer bg-warning ">
             <div class="container my-auto">
                 <div class="copyright text-center text-white my-auto">
-                    <h5 class="text-center font-weight-bold">Copyright &copy; CBT SMK Tunas Harapan</h5>
-                    <h5 class="text-center text-white font-weight-bold">Design By Rahmadika S Setiawan, S.Kom</h5>
+                    <h5 class="text-center font-weight-bold text-uppercase">Copyright &copy; Perguruan Tunas Harapan swadarma</h5>
+                    <h5 class="text-center text-white font-weight-bold text-uppercase">Design By Produktif TEFA SMK TUNAS harapan</h5>
                 </div>
             </div>
         </footer>
