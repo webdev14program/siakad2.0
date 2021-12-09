@@ -31,7 +31,7 @@ class Dashboard extends CI_Controller
     public function master_siswa()
     {
         $this->Model_keamanan->getKeamanan();
-        // $isi['guru'] = $this->Model_guru->DataGuruSMK();
+        $isi['siswa'] = $this->Model_siswa->DataSiswa();
 
         $isi['content'] = 'tampilan_master_siswa';
         $this->load->view('templates/header');

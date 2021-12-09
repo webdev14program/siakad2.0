@@ -28,32 +28,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr>
+                            <tr>
                                 <?php
                                 $no = 1;
-                                foreach ($guru as $row) {
+                                foreach ($siswa as $row) {
                                 ?>
-                                    <td class="text-centers">
+                                    <td class="text-center">
                                         <h6><?php echo $no++; ?></h6>
                                     </td>
-                                    <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['kode']; ?></h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="text-uppercase font-weight-bold"><?php echo $row['nama']; ?></h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="text-uppercase font-weight-bold"><?php echo $row['guru']; ?></h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="text-uppercase text-center font-weight-bold"><?php echo $row['jenis_guru']; ?></h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="text-uppercase text-center font-weight-bold"><?php echo $row['jenjang']; ?></h6>
-                                    </td>
-
+                                    <td class=" text-center"><?= $row['id']; ?></td>
+                                    <td class=" "><?= $row['nama_siswa']; ?></td>
+                                    <td class=" "><?= $row['nama_kelas']; ?></td>
+                                    <td class=" text-center"><?= $row['jenjang']; ?></td>
                             </tr>
-                        <?php } ?> -->
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
