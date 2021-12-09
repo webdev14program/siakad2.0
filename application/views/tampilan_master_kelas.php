@@ -35,14 +35,14 @@
                                 $no = 1;
                                 foreach ($kelas as $row) {
                                 ?>
-                                    <td class="text-centers">
+                                    <td class="text-center">
                                         <h6><?php echo $no++; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['id']; ?></h6>
+                                        <h6 class="text-uppercase text-center"><?php echo $row['id_kelas']; ?></h6>
                                     </td>
                                     <td>
-                                        <h6 class="text-uppercase text-center"><?php echo $row['kode']; ?></h6>
+                                        <h6 class="text-uppercase "><?php echo $row['jurusan']; ?></h6>
                                     </td>
                                     <td>
                                         <h6 class="text-uppercase text-center"><?php echo $row['kelas']; ?></h6>
