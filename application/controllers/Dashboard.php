@@ -49,4 +49,15 @@ class Dashboard extends CI_Controller
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
+
+    public function master_jurusan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['jurusan'] = $this->Model_jurusan->DataJurusan();
+
+        $isi['content'] = 'tampilan_master_jurusan';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
 }

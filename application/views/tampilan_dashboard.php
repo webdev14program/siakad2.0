@@ -39,7 +39,7 @@
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_guru">Master Guru</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
-
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_jurusan">Master Jurusan</a>
                 </div>
             </div>
         </li>
