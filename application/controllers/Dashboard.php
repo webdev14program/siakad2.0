@@ -20,9 +20,21 @@ class Dashboard extends CI_Controller
     public function master_guru()
     {
         $this->Model_keamanan->getKeamanan();
-        $isi['guru'] = $this->Model_guru->DataGuru();
+        $isi['guru_per_jenjang'] = $this->Model_guru->DataPerJenjang();
 
-        $isi['content'] = 'tampilan_master_guru';
+        $isi['content'] = 'Guru/tampilan_master_guru';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail_master_guru($kode_jenjang)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_guru->DataGuruHeader($kode_jenjang);
+        $isi['data_guru'] = $this->Model_guru->DataGuru($kode_jenjang);
+
+        $isi['content'] = 'Guru/detail_master_guru';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
@@ -59,5 +71,11 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('/');
     }
 }

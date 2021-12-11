@@ -42,9 +42,33 @@ class Model_guru extends CI_Model
         return $query->row()->guru_smk;
     }
 
-    public function DataGuru()
+    public function DataPerJenjang()
     {
-        $sql = "SELECT * FROM `guru`";
+        $sql = "SELECT *,COUNT(guru.jenjang) AS jumlah_guru,jenjang.jenjang AS nama_jenjang FROM `guru`
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+                GROUP BY guru.jenjang
+                ORDER BY jenjang.id_jenjang ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function DataGuruHeader($kode_jenjang)
+    {
+        $sql = "SELECT *,jenjang.jenjang AS nama_jenjang FROM `guru`
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+                WHERE guru.jenjang LIKE '%$kode_jenjang%';";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+
+    public function DataGuru($kode_jenjang)
+    {
+        $sql = "SELECT *,jenjang.jenjang AS nama_jenjang FROM `guru`
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+                WHERE guru.jenjang LIKE '%$kode_jenjang%';";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
