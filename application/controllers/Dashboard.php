@@ -43,9 +43,21 @@ class Dashboard extends CI_Controller
     public function master_siswa()
     {
         $this->Model_keamanan->getKeamanan();
-        $isi['siswa'] = $this->Model_siswa->DataSiswa();
+        $isi['siswa'] = $this->Model_siswa->DataSiswaPerJenjang();
 
-        $isi['content'] = 'tampilan_master_siswa';
+        $isi['content'] = 'Siswa/tampilan_master_siswa';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail_master_siswa($id_kelas)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_siswa->DataSiswaHeader($id_kelas);
+        $isi['data_siswa'] = $this->Model_siswa->DataSiswa($id_kelas);
+
+        $isi['content'] = 'Siswa/detail_master_siswa';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
@@ -68,6 +80,17 @@ class Dashboard extends CI_Controller
         $isi['jurusan'] = $this->Model_jurusan->DataJurusan();
 
         $isi['content'] = 'tampilan_master_jurusan';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function data_absen_guru_perbulan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulan();
+
+        $isi['content'] = 'Absensi/tampilan_absenGuru_per_bulan';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');

@@ -72,4 +72,17 @@ class Model_guru extends CI_Model
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+    public function AbsenGuruPerbulan()
+    {
+        $sql = "SELECT *, monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun, jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang FROM `absenguru`
+INNER JOIN guru
+ON absenguru.kode=guru.kode
+INNER JOIN jenjang
+ON guru.jenjang=jenjang.kode_jenjang
+GROUP by bulan_tahun,guru.jenjang  
+ORDER BY `tahun` ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }
