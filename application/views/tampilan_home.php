@@ -112,11 +112,61 @@
                         </tr>
                         <tr>
                             <td>Contact Developer </td>
-                            <td>: <a class="btn btn-primary btn-sm" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Rahmadika, Saya ingin bertanya tentang SYSETM ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER SIAKAD (SYSTEM 1)</a></td>
-                            <td><a class="btn btn-primary btn-sm" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Vishnu, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSITUNAS HARAPAN" target="_blank">DEVELOPER SIAKAD (INFRA 1)</a></td>
+                            <td>: <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    List Contact
+                                </button></td>
+
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white text-uppercase font-weight-bold " id="exampleModalLabel">List Developer</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Specialis</th>
+                                <th scope="col">Contact WA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Vishnu Isvara, S. Kom</td>
+                                <td>Infrastruktur 1</td>
+                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Vishnu, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (INFRA 1)</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Usup Raharjo, S.Kom</td>
+                                <td>Infrastruktur 1</td>
+                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Usup, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (INFRA 2)</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Rahmadika S Setiawan, S.Kom</td>
+                                <td>System 1</td>
+                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Usup, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (SYSTEM 1)</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

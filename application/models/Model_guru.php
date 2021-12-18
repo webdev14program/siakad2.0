@@ -85,4 +85,41 @@ ORDER BY `tahun` ASC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+    public function PrintHeaderGuruPerbulan($bulan_tahun)
+    {
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,
+                concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,
+                count(IF(absenguru.ket='Masuk',
+                'Masuk',NULL)) AS ket_masuk,
+                COUNT(IF(hour(absenguru.date)>7  AND absenguru.ket='Masuk',
+                'Terlambat',NULL)) AS ket_terlambat,
+                count(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar',
+                'Keluar',NULL)) AS ket_keluar
+                FROM `absenguru`
+                INNER join guru
+                ON absenguru.kode=guru.kode
+                WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) LIKE '%$bulan_tahun%'
+                GROUP BY guru.kode;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+    public function PrintGuruPerbulan($bulan_tahun)
+    {
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,
+                concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,
+                count(IF(absenguru.ket='Masuk',
+                'Masuk',NULL)) AS ket_masuk,
+                COUNT(IF(hour(absenguru.date)>7  AND absenguru.ket='Masuk',
+                'Terlambat',NULL)) AS ket_terlambat,
+                count(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar',
+                'Keluar',NULL)) AS ket_keluar
+                FROM `absenguru`
+                INNER join guru
+                ON absenguru.kode=guru.kode
+                WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) LIKE '%$bulan_tahun%'
+                GROUP BY guru.kode;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }
