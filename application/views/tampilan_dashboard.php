@@ -59,7 +59,7 @@
                 <span>Guru</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard/data_absen_siswa_perbulan">
                 <i class="fas fa-user-graduate"></i>
                 <span>Siswa</span></a>
         </li>

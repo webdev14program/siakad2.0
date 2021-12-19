@@ -105,6 +105,17 @@ class Dashboard extends CI_Controller
         $this->load->view('Absensi/print_absenGuru_per_bulan', $isi);
     }
 
+    public function data_absen_siswa_perbulan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        // $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulan();
+
+        $isi['content'] = 'Absensi/tampilan_absenSiswa_per_bulan';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
     public function logout()
     {
         $this->session->sess_destroy();
