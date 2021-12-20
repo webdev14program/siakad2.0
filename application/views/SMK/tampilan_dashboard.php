@@ -37,8 +37,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Data Master</h6>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_guru">Data Guru</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_siswa">Data Siswa</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_kelas">Data Kelas</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_jurusan">Master Jurusan</a>
                 </div>
             </div>

@@ -27,4 +27,26 @@ class Dashboard_smk extends CI_Controller
         $this->load->view('SMK/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
+
+    public function data_siswa()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['data_siswa'] = $this->Model_siswa->DataSiswaSMK();
+
+        $isi['content'] = 'SMK/Siswa/tampilan_master_siswa';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function data_kelas()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['data_kelas'] = $this->Model_kelas->DataKelasSMK();
+
+        $isi['content'] = 'SMK/tampilan_master_kelas';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
 }
