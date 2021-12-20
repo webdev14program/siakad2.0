@@ -1,0 +1,30 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Dashboard_smk extends CI_Controller
+{
+
+    public function index()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['siswa_smk'] = $this->Model_siswa->countSiswaSMK();
+        $isi['guru_smk'] = $this->Model_guru->countGuruSMK();
+        $isi['jurusan_smk'] = $this->Model_jurusan->countJurusanSMK();
+        $isi['kelas_smk'] = $this->Model_kelas->countKelasSMK();
+        $isi['content'] = 'SMK/tampilan_home';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function data_guru()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['data_guru'] = $this->Model_guru->DataGuruSMK();
+
+        $isi['content'] = 'SMK/Guru/tampilan_master_guru';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+}

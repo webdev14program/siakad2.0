@@ -5,8 +5,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard">
-            <div class="sidebar-brand-text mx-3">ADMIN PUSAT</div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard_smk">
+            <div class="sidebar-brand-text mx-3">KURIKULUM <br>SMK</div>
         </a>
 
         <!-- Divider -->
@@ -14,7 +14,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_smk">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -36,7 +36,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Data Master</h6>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_guru">Master Guru</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_guru">Data Guru</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_jurusan">Master Jurusan</a>

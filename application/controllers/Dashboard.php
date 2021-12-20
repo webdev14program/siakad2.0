@@ -116,6 +116,18 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function keterangan_tambahan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahan();
+
+        $isi['content'] = 'Absensi/tampilan_keterangan_tambahan';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+
     public function logout()
     {
         $this->session->sess_destroy();

@@ -3,6 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_siswa extends CI_Model
 {
+
+    public function countSiswaSMK()
+    {
+        $sql = "SELECT count(*) AS siswa_smk FROM `siswa`
+                WHERE siswa.jenjang LIKE '%SMK%';";
+        $query = $this->db->query($sql);
+        return $query->row()->siswa_smk;
+    }
     public function DataSiswaPerJenjang()
     {
         $sql = "SELECT *,kelas.id AS id_kelas,jurusan.id AS id_jurusan,kelas.kelas AS nama_kelas,jurusan.jurusan AS nama_jurusan ,siswa.jenjang AS nama_jenjang,count(siswa.nama_siswa) jumlah_siswa FROM `siswa`

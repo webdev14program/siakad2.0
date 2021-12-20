@@ -73,6 +73,14 @@ class Model_guru extends CI_Model
         return $query->result_array();
     }
 
+    public function DataGuruSMK()
+    {
+        $sql = "SELECT * FROM `guru`
+                WHERE guru.jenjang LIKE '%SMK%';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
     public function AbsenGuruPerbulan()
     {
         $sql = "SELECT *, monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun, jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang FROM `absenguru`
@@ -119,6 +127,18 @@ ORDER BY `tahun` ASC;";
                 ON absenguru.kode=guru.kode
                 WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) LIKE '%$bulan_tahun%'
                 GROUP BY guru.kode;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function keterangan_tambahan()
+    {
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.bukti_fisik,keterangan_tambahan.timestamp,
+day(keterangan_tambahan.timestamp) AS hari,monthname(keterangan_tambahan.timestamp) AS bulan, year(keterangan_tambahan.timestamp) AS tahun
+FROM `keterangan_tambahan`
+INNER JOIN guru
+ON keterangan_tambahan.id_guru=guru.id
+ORDER BY hari DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
