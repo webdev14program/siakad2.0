@@ -40,6 +40,15 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function print_master_guru($kode_jenjang)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_guru->DataGuruHeader($kode_jenjang);
+        $isi['data_guru'] = $this->Model_guru->DataGuru($kode_jenjang);
+
+        $this->load->view('Guru/print_akun_guru', $isi);
+    }
+
     public function master_siswa()
     {
         $this->Model_keamanan->getKeamanan();

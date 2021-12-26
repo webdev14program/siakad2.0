@@ -23,7 +23,10 @@
                                     <h6 class="font-weight-bold" style="text-transform: uppercase;">Jumlah Guru</h6>
                                 </th>
                                 <th scope="col">
-                                    <h6 class="font-weight-bold" style="text-transform: uppercase;">Aksi</h6>
+                                    <h6 class="font-weight-bold" style="text-transform: uppercase;">Detail guru</h6>
+                                </th>
+                                <th scope="col">
+                                    <h6 class="font-weight-bold" style="text-transform: uppercase;">Print Akun</h6>
                                 </th>
                             </tr>
                         </thead>
@@ -46,6 +49,7 @@
                                         <h6 class="text-uppercase text-center font-weight-bold"><?= $row['jumlah_guru']; ?> Guru</h6>
                                     </td>
                                     <td class="text-center"><a class="btn btn-primary btn-sm " href="<?= base_url() ?>Dashboard/detail_master_guru/<?= $row['kode_jenjang'] ?>"><i class="fas fa-search"></i> Detail</a></td>
+                                    <td class="text-center"><a class="btn btn-danger btn-sm " href="<?= base_url() ?>Dashboard/print_master_guru/<?= $row['kode_jenjang'] ?>" target="_blank"><i class="fas fa-print"></i> Print</a></td>
                             </tr>
                         <?php } ?>
                         </tbody>
