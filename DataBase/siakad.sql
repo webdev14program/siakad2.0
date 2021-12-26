@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Des 2021 pada 23.33
+-- Waktu pembuatan: 26 Des 2021 pada 04.51
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.4.22
 
@@ -39,17 +39,21 @@ CREATE TABLE `absenguru` (
 --
 
 INSERT INTO `absenguru` (`number`, `kode`, `date`, `ket`) VALUES
-(1, 'Q', '2019-12-31 07:02:02', 'Masuk'),
+(1, 'Q', '2019-12-31 00:02:02', 'Masuk'),
 (2, 'Q', '2019-12-31 07:02:02', 'Keluar'),
 (4, 'B1', '2021-12-12 09:00:19', 'Keluar'),
 (5, 'B1', '2021-12-12 09:00:19', 'Keluar'),
-(6, 'B1', '2021-12-12 09:00:19', 'Masuk'),
+(6, 'B1', '2021-12-12 00:00:19', 'Masuk'),
 (7, 'B1', '2021-12-12 09:00:19', 'Masuk'),
 (8, 'S', '2020-01-06 12:18:15', 'Masuk'),
 (9, 'S', '2020-01-08 01:04:55', 'Keluar'),
 (11, 'B1', '2021-12-11 23:30:19', 'Masuk'),
 (12, 'B1', '2021-12-13 14:40:42', 'Keluar'),
-(17, 'B1', '2021-12-13 14:10:45', 'Keluar');
+(17, 'B1', '2021-12-13 14:10:45', 'Keluar'),
+(18, 'B1', '2021-12-13 01:10:45', 'Masuk'),
+(19, 'D', '2021-12-13 00:10:45', 'Masuk'),
+(20, 'D', '2021-12-13 01:16:45', 'Masuk'),
+(21, 'A', '2021-12-17 16:21:43', 'Masuk');
 
 -- --------------------------------------------------------
 
@@ -92,7 +96,7 @@ CREATE TABLE `auth` (
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `nama` varchar(256) NOT NULL,
-  `level` enum('admin','kurikulum','guru','siswa','tu','guru') NOT NULL
+  `level` enum('admin','kurikulumSMK','kurikulumTK','kurikulumSD','kurikulumSMP','kurikulumSMA') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -101,7 +105,7 @@ CREATE TABLE `auth` (
 
 INSERT INTO `auth` (`id_user`, `username`, `password`, `nama`, `level`) VALUES
 (1, 'admin', '0192023a7bbd73250516f069df18b500', '', 'admin'),
-(2, 'kurikulum', '248e6e545ad791936c77a244bd8c000b', '', 'kurikulum');
+(2, 'kurikulumSMK', '1d269722acfbf408b40c7af7b4619740', 'KURIKULUM SMK', 'kurikulumSMK');
 
 -- --------------------------------------------------------
 
@@ -110,67 +114,69 @@ INSERT INTO `auth` (`id_user`, `username`, `password`, `nama`, `level`) VALUES
 --
 
 CREATE TABLE `guru` (
-  `id` int(8) NOT NULL,
-  `kode` varchar(8) NOT NULL,
-  `nama` varchar(500) NOT NULL,
-  `guru` varchar(50) NOT NULL,
+  `id` int(18) NOT NULL,
+  `kode` varchar(4) NOT NULL,
+  `nama` varchar(512) NOT NULL,
+  `guru` varchar(128) NOT NULL,
   `jenis_guru` varchar(128) NOT NULL,
-  `jenjang` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `jenjang` varchar(18) NOT NULL,
+  `username` varchar(4) NOT NULL,
+  `password` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `guru`
 --
 
-INSERT INTO `guru` (`id`, `kode`, `nama`, `guru`, `jenis_guru`, `jenjang`) VALUES
-(1011074, 'A', 'Widodo, SE,M.M', 'Kepala Sekolah', ' - ', 'SMK'),
-(1025307, 'B', 'Winartono, S.H', 'Staff TU', ' - ', 'SMK'),
-(1039106, 'C', 'Swiyono, SE', 'Wakasek Kesiswaan', 'Produktif BDP', 'SMK'),
-(1041296, 'D', 'Dini Chrisnawati,S.Pd ', 'Wakasek Kurikulum', 'Produktif AKL', 'SMK'),
-(1051573, 'E', 'Hary Puspitarini, M.Pd ', 'Wakasek Sarana Prasana', 'Umum', 'SMK'),
-(1062332, 'F', 'Irfan, S.Pd                       ', 'Ketua Prodi OTKP', 'Produktif OTKP', 'SMK'),
-(1074996, 'G', 'Vishnu Isvara, S. Kom ', 'Ketua Prodi TKJ', 'Produktif TKJ', 'SMK'),
-(1084128, 'H', 'Henri Wicaksono, S.E ', 'Ketua Prodi AKL', 'Produktif AKL', 'SMK'),
-(1091957, 'I', 'Nofa Aji Zatmiko, S.Pd ', 'Ketua Prodi BDP', 'Produktif BDP', 'SMK'),
-(1104784, 'J', 'Nurul Huda, S.Ag', 'Operator Sekolah', 'Umum', 'SMK'),
-(1114979, 'K', 'Eko, S.S', 'Guru', 'Umum', 'SMK'),
-(1124090, 'L', 'Sriyanti, S.Pd                 ', 'Guru', 'Produktif AKL', 'SMK'),
-(1131451, 'M', 'Ajizah Tri Lestari, S.Si  ', 'Guru', 'Umum', 'SMK'),
-(1143755, 'N', 'Istiqomah, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1153622, 'O', 'Tugijono, S.Ag                ', 'Guru', 'Umum', 'SMK'),
-(1169988, 'P', 'Bambang Sumitro, S.Kom                              ', 'Guru', 'Produktif TKJ', 'SMK'),
-(1176884, 'Q', 'Gutser Siburian, S.Pd     ', 'Guru', 'Umum', 'SMK'),
-(1187169, 'R', 'Ugi Sistianto, S.Pd        ', 'Guru', 'Umum', 'SMK'),
-(1192445, 'S', 'Drs. Puji Waluyo, MM  ', 'Guru', 'Umum', 'SMK'),
-(1205468, 'T', 'Vevy Yurizal, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1214738, 'U', 'Suhendi, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1225320, 'V', 'Siswanto, M.Pd', 'Guru', 'Umum', 'SMK'),
-(1239373, 'W', 'Risma Harjanti                ', 'Guru', 'Umum', 'SMK'),
-(1247722, 'X', 'Winarno, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1253257, 'Y', 'Yayah Syamsiah, M.Pd', 'Guru', 'Produktif BDP', 'SMK'),
-(1269419, 'Z', 'Maria Menge, M.Pd   ', 'Guru', 'Produktif BDP', 'SMK'),
-(1273445, 'A1', 'Yuliar Sutan, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1289034, 'A2', 'Esa Fathonah, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1291170, 'A3', 'Priyono, S.Pd', 'Guru', 'Produktif OTKP', 'SMK'),
-(1305651, 'A4', 'Yike Diana Syaputri,S.Pd', 'Guru', 'Umum', 'SMK'),
-(1316866, 'A5', 'Eka Tiara Wirahayu, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1323666, 'A6', 'Khalisa Qatrunada, S.Ag', 'Guru', 'Umum', 'SMK'),
-(1333883, 'A7', 'Lely Lianasari, S.Pd', 'Guru', 'Produktif OTKP', 'SMK'),
-(1343330, 'A8', 'Eky Nurbani, S.Psi', 'Guru', 'Umum', 'SMK'),
-(1354141, 'A9', 'Usup Raharjo, A.Md', 'Guru', 'Produktif TKJ', 'SMK'),
-(1365778, 'A10', 'Mufidah, S.E', 'Guru', 'Produktif AKL', 'SMK'),
-(1379269, 'B1', 'Rahmadika Surya S.Kom                             ', 'Guru', 'Produktif TKJ', 'SMK'),
-(1383900, 'B2', 'Abu Amar A, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1398694, 'B2', 'Rabella Tria P, S.Pd ', 'Guru', 'Produktif OTKP', 'SMK'),
-(1405357, 'B3', 'Dayanti Wisnu Wardani, S.Pd', 'Guru', 'Produktif AKL', 'SMK'),
-(1417168, 'B4', 'Siti Maryam, S.Pd          ', 'Guru', 'Produktif BDP', 'SMK'),
-(1425911, 'B5', 'Steven James, S.Kom', 'Guru', 'Produktif TKJ', 'SMK'),
-(1433654, 'B6', 'Tyas Ayu Maharani', 'Guru', 'Umum', 'SMK'),
-(1444158, 'B7', 'Novia Putri Yude, S.Pd', 'Guru', 'Umum', 'SMK'),
-(1451328, 'B8', 'Adilah Widiasti, S.Kom', 'Guru', 'Produktif TKJ', 'SMK'),
-(1463029, 'T1', 'Danang', 'Teknisi', 'Produktif TKJ', 'SMK'),
-(1474053, 'T2', 'Marcellino Raditio', 'Teknisi', 'Produktif TKJ', 'SMK'),
-(1489105, 'T3', 'Andika', 'Teknisi', 'Produktif TKJ', 'SMK');
+INSERT INTO `guru` (`id`, `kode`, `nama`, `guru`, `jenis_guru`, `jenjang`, `username`, `password`) VALUES
+(1011074, 'A', 'Widodo, SE,M.M', 'Kepala Sekolah', ' - ', 'SMK', 'A', 'Widodo12345*'),
+(1025307, 'B', 'Winartono, S.H', 'Staff TU', ' - ', 'SMK', 'B', 'Winar12345*'),
+(1039106, 'C', 'Swiyono, SE', 'Wakasek Kesiswaan', 'Produktif BDP', 'SMK', 'C', 'Yono12345*'),
+(1041296, 'D', 'Dini Chrisnawati,S.Pd ', 'Wakasek Kurikulum', 'Produktif AKL', 'SMK', 'D', 'Dini12345*'),
+(1051573, 'E', 'Hary Puspitarini, M.Pd ', 'Wakasek Sarana Prasana', 'Umum', 'SMK', 'E', 'Hary12345*'),
+(1062332, 'F', 'Irfan, S.Pd                       ', 'Ketua Prodi OTKP', 'Produktif OTKP', 'SMK', 'F', 'Irfan12345*'),
+(1074996, 'G', 'Vishnu Isvara, S. Kom ', 'Ketua Prodi TKJ', 'Produktif TKJ', 'SMK', 'G', 'Vishnu12345*'),
+(1084128, 'H', 'Henri Wicaksono, S.E ', 'Ketua Prodi AKL', 'Produktif AKL', 'SMK', 'H', 'Henri12345*'),
+(1091957, 'I', 'Nofa Aji Zatmiko, S.Pd ', 'Ketua Prodi BDP', 'Produktif BDP', 'SMK', 'I', 'Nofa12345*'),
+(1104784, 'J', 'Nurul Huda, S.Ag', 'Operator Sekolah', 'Umum', 'SMK', 'J', 'Nurul12345*'),
+(1114979, 'K', 'Eko, S.S', 'Guru', 'Umum', 'SMK', 'K', 'Eko12345*'),
+(1124090, 'L', 'Sriyanti, S.Pd                 ', 'Guru', 'Produktif AKL', 'SMK', 'L', 'Yanti12345*'),
+(1131451, 'M', 'Ajizah Tri Lestari, S.Si  ', 'Guru', 'Umum', 'SMK', 'M', 'Isti12345*'),
+(1143755, 'N', 'Istiqomah, S.Pd', 'Guru', 'Umum', 'SMK', 'N', 'Tari12345*'),
+(1153622, 'O', 'Tugijono, S.Ag                ', 'Guru', 'Umum', 'SMK', 'O', 'Tugi12345*'),
+(1169988, 'P', 'Bambang Sumitro, S.Kom                              ', 'Guru', 'Produktif TKJ', 'SMK', 'P', 'Bams12345*'),
+(1176884, 'Q', 'Gutser Siburian, S.Pd     ', 'Guru', 'Umum', 'SMK', 'Q', 'Gutser12345*'),
+(1187169, 'R', 'Ugi Sistianto, S.Pd        ', 'Guru', 'Umum', 'SMK', 'R', 'Ugi12345*'),
+(1192445, 'S', 'Drs. Puji Waluyo, MM  ', 'Guru', 'Umum', 'SMK', 'S', 'Puji12345*'),
+(1205468, 'T', 'Vevy Yurizal, S.Pd', 'Guru', 'Umum', 'SMK', 'T', 'Vevy12345*'),
+(1214738, 'U', 'Suhendi, S.Pd', 'Guru', 'Umum', 'SMK', 'U', 'Hendi12345*'),
+(1225320, 'V', 'Siswanto, M.Pd', 'Guru', 'Umum', 'SMK', 'V', 'Sis12345*'),
+(1239373, 'W', 'Risma Harjanti                ', 'Guru', 'Umum', 'SMK', 'W', 'Risma12345*'),
+(1247722, 'X', 'Winarno, S.Pd', 'Guru', 'Umum', 'SMK', 'X', 'Nano12345*'),
+(1253257, 'Y', 'Yayah Syamsiah, M.Pd', 'Guru', 'Produktif BDP', 'SMK', 'Y', 'Yaya12345*'),
+(1269419, 'Z', 'Maria Menge, M.Pd   ', 'Guru', 'Produktif BDP', 'SMK', 'Z', 'Mary12345*'),
+(1273445, 'A1', 'Yuliar Sutan, S.Pd', 'Guru', 'Umum', 'SMK', 'A1', 'Yuliar12345*'),
+(1289034, 'A2', 'Esa Fathonah, S.Pd', 'Guru', 'Umum', 'SMK', 'A2', 'Esa12345*'),
+(1291170, 'A3', 'Priyono, S.Pd', 'Guru', 'Produktif OTKP', 'SMK', 'A3', 'Pri12345*'),
+(1305651, 'A4', 'Yike Diana Syaputri,S.Pd', 'Guru', 'Umum', 'SMK', 'A4', 'Yike12345*'),
+(1316866, 'A5', 'Eka Tiara Wirahayu, S.Pd', 'Guru', 'Umum', 'SMK', 'A5', 'Eka12345*'),
+(1323666, 'A6', 'Khalisa Qatrunada, S.Ag', 'Guru', 'Umum', 'SMK', 'A6', 'Nada12345*'),
+(1333883, 'A7', 'Lely Lianasari, S.Pd', 'Guru', 'Produktif OTKP', 'SMK', 'A7', 'Lely12345*'),
+(1343330, 'A8', 'Eky Nurbani, S.Psi', 'Guru', 'Umum', 'SMK', 'A8', 'Eky12345*'),
+(1354141, 'A9', 'Usup Raharjo, A.Md', 'Guru', 'Produktif TKJ', 'SMK', 'A9', 'Usup12345*'),
+(1365778, 'A10', 'Mufidah, S.E', 'Guru', 'Produktif AKL', 'SMK', 'A10', 'Fida12345*'),
+(1379269, 'B1', 'Rahmadika Surya S.Kom                             ', 'Guru', 'Produktif TKJ', 'SMK', 'B1', 'Dika12345*'),
+(1383900, 'B2', 'Abu Amar A, S.Pd', 'Guru', 'Umum', 'SMK', 'B2', 'Abu12345*'),
+(1398694, 'B2', 'Rabella Tria P, S.Pd ', 'Guru', 'Produktif OTKP', 'SMK', 'B2', 'Bela12345*'),
+(1405357, 'B3', 'Dayanti Wisnu Wardani, S.Pd', 'Guru', 'Produktif AKL', 'SMK', 'B3', 'Dayanti12345*'),
+(1417168, 'B4', 'Siti Maryam, S.Pd          ', 'Guru', 'Produktif BDP', 'SMK', 'B4', 'Maryam12345*'),
+(1425911, 'B5', 'Steven James, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B5', 'Steven12345*'),
+(1433654, 'B6', 'Tyas Ayu Maharani', 'Guru', 'Umum', 'SMK', 'B6', 'Tyas12345*'),
+(1444158, 'B7', 'Novia Putri Yude, S.Pd', 'Guru', 'Umum', 'SMK', 'B7', 'Vivi12345*'),
+(1451328, 'B8', 'Adilah Widiasti, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B8', 'Dilah12345*'),
+(1463029, 'T1', 'Danang', 'Teknisi', 'Produktif TKJ', 'SMK', 'T1', 'Danang12345*'),
+(1474053, 'T2', 'Marcellino Raditio', 'Teknisi', 'Produktif TKJ', 'SMK', 'T2', 'Marcel12345*'),
+(1489105, 'T3', 'Andika', 'Teknisi', 'Produktif TKJ', 'SMK', 'T3', 'Andika12345*');
 
 -- --------------------------------------------------------
 
@@ -215,10 +221,7 @@ INSERT INTO `jurusan` (`id`, `kode`, `jurusan`) VALUES
 (101, 'AKL', 'AKUTANSI KEUANGAN LEMBAGA'),
 (202, 'BDP', 'BISNIS DARING PEMASARAN'),
 (303, 'OTKP', 'OTOMATISASI TATA KELOLA PERKANTORAN'),
-(404, 'TKJ', 'TEKNIK KOMPUTER DAN JARINGAN'),
-(505, 'X SMA', 'SEKOLAH MENENGAH ATAS (SMA)'),
-(606, 'XI SMA', 'SEKOLAH MENENGAH ATAS (SMA)'),
-(707, 'XII SMA', 'SEKOLAH MENENGAH ATAS (SMA)');
+(404, 'TKJ', 'TEKNIK KOMPUTER DAN JARINGAN');
 
 -- --------------------------------------------------------
 
@@ -276,6 +279,29 @@ INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
 (137649, 'XII SMA', 'XII IPA 2', 'SMA'),
 (138283, 'XII SMA', 'XII IPS 1', 'SMA'),
 (139727, 'XII SMA', 'XII IPS 2', 'SMA');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `keterangan_tambahan`
+--
+
+CREATE TABLE `keterangan_tambahan` (
+  `id_keterangan` int(11) NOT NULL,
+  `id_guru` varchar(16) NOT NULL,
+  `nama_keterangan` varchar(256) NOT NULL,
+  `bukti_fisik` varchar(512) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `keterangan_tambahan`
+--
+
+INSERT INTO `keterangan_tambahan` (`id_keterangan`, `id_guru`, `nama_keterangan`, `bukti_fisik`, `timestamp`) VALUES
+(1001, '1379269', 'IJIN', '00305.jpg', '2021-12-19 09:42:52'),
+(1002, '1379269', 'SAKIT', '00306.jpg', '2021-12-19 09:42:52'),
+(1003, '1379269', 'SAKIT', '00306.jpg', '2021-12-20 09:42:52');
 
 -- --------------------------------------------------------
 
@@ -1712,7 +1738,7 @@ ALTER TABLE `auth`
 -- Indeks untuk tabel `guru`
 --
 ALTER TABLE `guru`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `jenjang`
@@ -1731,6 +1757,12 @@ ALTER TABLE `jurusan`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indeks untuk tabel `keterangan_tambahan`
+--
+ALTER TABLE `keterangan_tambahan`
+  ADD PRIMARY KEY (`id_keterangan`);
 
 --
 -- Indeks untuk tabel `mapel`
@@ -1752,7 +1784,7 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT untuk tabel `absenguru`
 --
 ALTER TABLE `absenguru`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `absensiswa`
@@ -1767,12 +1799,6 @@ ALTER TABLE `auth`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `guru`
---
-ALTER TABLE `guru`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1489106;
-
---
 -- AUTO_INCREMENT untuk tabel `jurusan`
 --
 ALTER TABLE `jurusan`
@@ -1783,6 +1809,12 @@ ALTER TABLE `jurusan`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139728;
+
+--
+-- AUTO_INCREMENT untuk tabel `keterangan_tambahan`
+--
+ALTER TABLE `keterangan_tambahan`
+  MODIFY `id_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
