@@ -44,10 +44,11 @@
                         <th scope="col">#</th>
                         <th scope="col">id guru</th>
                         <th scope="col">nama guru</th>
-                        <th scope="col">jenjang</th>
                         <th scope="col">absen masuk</th>
                         <th scope="col">absen keluar</th>
                         <th scope="col">terlambat</th>
+                        <th scope="col">sakit</th>
+                        <th scope="col">ijin</th>
                     </tr>
                 </thead>
                 <tbody class="text-uppercase font-weight-bold">
@@ -59,10 +60,11 @@
                             <td class="text-center"><?php echo $no++; ?></td>
                             <td class=" text-center"><?= $row['id']; ?></td>
                             <td class=" "><?= $row['nama']; ?></td>
-                            <td class=" text-center"><?= $row['jenjang']; ?></td>
                             <td class=" text-center"><?= $row['ket_masuk']; ?></td>
                             <td class=" text-center"><?= $row['ket_keluar']; ?></td>
                             <td class=" text-center"><?= $row['ket_terlambat']; ?></td>
+                            <td class=" text-center"><?= $row['ket_sakit']; ?></td>
+                            <td class=" text-center"><?= $row['ket_ijin']; ?></td>
                     </tr>
                 <?php } ?>
                 </tbody>

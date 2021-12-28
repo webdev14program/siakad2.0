@@ -84,61 +84,72 @@ class Model_guru extends CI_Model
     public function AbsenGuruPerbulan()
     {
         $sql = "SELECT *, monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun, jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang FROM `absenguru`
-INNER JOIN guru
-ON absenguru.kode=guru.kode
-INNER JOIN jenjang
-ON guru.jenjang=jenjang.kode_jenjang
-GROUP by bulan_tahun,guru.jenjang  
-ORDER BY `tahun` ASC;";
+                INNER JOIN guru
+                ON absenguru.kode=guru.kode
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+                GROUP by bulan_tahun,guru.jenjang  
+                ORDER BY `tahun` ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function AbsenGuruPerbulanSMK()
+    {
+        $sql = "SELECT *, monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun, jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* FROM `absenguru`
+                INNER JOIN guru
+                ON absenguru.kode=guru.kode
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+                WHERE jenjang.kode_jenjang='SMK'
+                GROUP by bulan_tahun,guru.jenjang  
+                ORDER BY `tahun` ASC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
 
     public function PrintHeaderGuruPerbulan($bulan_tahun)
     {
-        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,
-                concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,
-                count(IF(absenguru.ket='Masuk',
-                'Masuk',NULL)) AS ket_masuk,
-                COUNT(IF(hour(absenguru.date)>7  AND absenguru.ket='Masuk',
-                'Terlambat',NULL)) AS ket_terlambat,
-                count(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar',
-                'Keluar',NULL)) AS ket_keluar
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,absenguru.ket,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam ,
+                COUNT(IF(absenguru.ket='Masuk','Masuk',NULL)) AS ket_masuk,
+                COUNT(IF(concat(hour(absenguru.date),':',minute(absenguru.date))>'7:16' AND absenguru.ket='Masuk','Terlambat',NULL)) AS ket_terlambat,
+                COUNT(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar','Keluar',NULL)) AS ket_keluar
                 FROM `absenguru`
-                INNER join guru
+                INNER JOIN guru
                 ON absenguru.kode=guru.kode
                 WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) LIKE '%$bulan_tahun%'
-                GROUP BY guru.kode;";
+                GROUP BY guru.id
+                ORDER BY guru.id ASC;";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
     public function PrintGuruPerbulan($bulan_tahun)
     {
-        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,
-                concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,
-                count(IF(absenguru.ket='Masuk',
-                'Masuk',NULL)) AS ket_masuk,
-                COUNT(IF(hour(absenguru.date)>7  AND absenguru.ket='Masuk',
-                'Terlambat',NULL)) AS ket_terlambat,
-                count(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar',
-                'Keluar',NULL)) AS ket_keluar
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,absenguru.ket,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam ,
+                COUNT(IF(absenguru.ket='Masuk','Masuk',NULL)) AS ket_masuk,
+                COUNT(IF(concat(hour(absenguru.date),':',minute(absenguru.date))>'7:16' AND absenguru.ket='Masuk','Terlambat',NULL)) AS ket_terlambat,
+                COUNT(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar','Keluar',NULL)) AS ket_keluar,
+                COUNT(if(absenguru.ket='Sakit','Sakit',NULL)) AS ket_sakit,
+                COUNT(if(absenguru.ket='Ijin','Ijin',NULL)) AS ket_ijin
                 FROM `absenguru`
-                INNER join guru
+                INNER JOIN guru
                 ON absenguru.kode=guru.kode
                 WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) LIKE '%$bulan_tahun%'
-                GROUP BY guru.kode;";
+                GROUP BY guru.id
+                ORDER BY guru.id ASC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
 
-    public function keterangan_tambahan()
+    public function keterangan_tambahanSMK()
     {
-        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.bukti_fisik,keterangan_tambahan.timestamp,
-day(keterangan_tambahan.timestamp) AS hari,monthname(keterangan_tambahan.timestamp) AS bulan, year(keterangan_tambahan.timestamp) AS tahun
-FROM `keterangan_tambahan`
-INNER JOIN guru
-ON keterangan_tambahan.id_guru=guru.id
-ORDER BY hari DESC;";
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.timestamp,
+            day(keterangan_tambahan.timestamp) AS hari,monthname(keterangan_tambahan.timestamp) AS bulan, year(keterangan_tambahan.timestamp) AS tahun
+            FROM `keterangan_tambahan`
+            INNER JOIN guru
+            ON keterangan_tambahan.kode_guru=guru.kode
+            WHERE guru.jenjang='SMK'
+            ORDER BY keterangan_tambahan.timestamp DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

@@ -54,36 +54,28 @@
                 <h5 class="modal-title text-uppercase font-weight-bold text-white" id="exampleModalLabel">tambah keterangan absen</h5>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>GURU</label>
-                        <select class="form-control" name="mapel">
-                            <OPtion class="bg-info text-white" disabled>PILIH GURU</OPtion>
-                            <?php foreach ($guru as $row) { ?>
-                                <option value="<?= $row['kode']; ?>"><?= $row['id']; ?> | <?= $row['nama']; ?> </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>STATUS TIDAK MASUK</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>SAKIT</option>
-                            <option>IJIN</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>TANGGAL</label>
-                        <input type="date" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>BUKTI FISIK</label>
-                        <input type="file" class="form-control-file">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                <?= form_open_multipart('Dashboard_smk/upload_keterangan_tambahan'); ?>
+                <div class="form-group">
+                    <label>GURU</label>
+                    <select class="form-control" name="kode">
+                        <OPtion class="bg-info text-white" disabled>PILIH GURU</OPtion>
+                        <?php foreach ($guru as $row) { ?>
+                            <option value="<?= $row['kode']; ?>"><?= $row['id']; ?> | <?= $row['kode']; ?> | <?= $row['nama']; ?> </option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>STATUS TIDAK MASUK</label>
+                    <select class="form-control" name="nama_keterangan">
+                        <option value="Sakit">SAKIT</option>
+                        <option value="Ijin">IJIN</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+                <?= form_close(); ?>
             </div>
         </div>
     </div>

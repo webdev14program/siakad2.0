@@ -50,6 +50,39 @@ class Dashboard_smk extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function data_jurusan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['jurusan'] = $this->Model_jurusan->DataJurusanSMK();
+
+        $isi['content'] = 'SMK/tampilan_master_jurusan';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function data_absen_guru_perbulan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulanSMK();
+
+        $isi['content'] = 'Absensi/tampilan_absenGuru_per_bulan';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function data_absen_siswa_perbulan()
+    {
+        $this->Model_keamanan->getKeamanan();
+        // $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulan();
+
+        $isi['content'] = 'SMK/Absensi/tampilan_absenSiswa_per_bulan';
+        $this->load->view('templates/header');
+        $this->load->view('SMK/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
     public function keterangan_tambahan()
     {
         $this->Model_keamanan->getKeamanan();
@@ -57,11 +90,33 @@ class Dashboard_smk extends CI_Controller
         // Drop Down
         $isi['guru'] = $this->Model_guru->DataGuruSMK();
 
-        $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahan();
+        $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahanSMK();
 
         $isi['content'] = 'SMK/Absensi/tampilan_keterangan_tambahan';
         $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('SMK/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
+    }
+
+    public function upload_keterangan_tambahan()
+    {
+        $kode = $this->input->post('kode');
+        $nama_keterangan = $this->input->post('nama_keterangan');
+
+        $data = array(
+            'id_keterangan'    => rand(100000, 999999),
+            'kode_guru'         => $kode,
+            'nama_keterangan'   => $nama_keterangan
+        );
+
+        $data2 = array(
+            'id_absenGuru'    => rand(100000, 999999),
+            'kode'              => $kode,
+            'ket'               => $nama_keterangan
+        );
+
+        $this->db->insert('keterangan_tambahan', $data);
+        $this->db->insert(' absenguru', $data2);
+        redirect('Dashboard_smk/keterangan_tambahan');
     }
 }

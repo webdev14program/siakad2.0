@@ -48,6 +48,8 @@
                         <th scope="col">absen masuk</th>
                         <th scope="col">absen keluar</th>
                         <th scope="col">terlambat</th>
+                        <th scope="col">sakit</th>
+                        <th scope="col">ijin</th>
                     </tr>
                 </thead>
                 <tbody class="text-uppercase font-weight-bold">
@@ -63,6 +65,8 @@
                             <td class=" text-center"><?= $row['ket_masuk']; ?></td>
                             <td class=" text-center"><?= $row['ket_keluar']; ?></td>
                             <td class=" text-center"><?= $row['ket_terlambat']; ?></td>
+                            <td class=" text-center"><?= $row['ket_sakit']; ?></td>
+                            <td class=" text-center"><?= $row['ket_ijin']; ?></td>
                     </tr>
                 <?php } ?>
                 </tbody>

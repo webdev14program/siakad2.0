@@ -17,4 +17,12 @@ class Model_jurusan extends CI_Model
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+    public function DataJurusanSMK()
+    {
+        $sql = "SELECT * FROM `jurusan`
+                WHERE jenjang='SMK';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }
