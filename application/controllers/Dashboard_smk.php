@@ -66,7 +66,7 @@ class Dashboard_smk extends CI_Controller
         $this->Model_keamanan->getKeamanan();
         $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulanSMK();
 
-        $isi['content'] = 'Absensi/tampilan_absenGuru_per_bulan';
+        $isi['content'] = 'SMK/Absensi/tampilan_absenGuru_per_bulan';
         $this->load->view('templates/header');
         $this->load->view('SMK/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');

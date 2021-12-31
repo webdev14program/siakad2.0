@@ -1,5 +1,5 @@
 <div class="alert alert-success" role="alert">
-    <h4 class="text-center font-weight-bold text-uppercase">absen guru <br>perbulan perhari</h4>
+    <h4 class="text-center font-weight-bold text-uppercase">absen guru <br>perbulan</h4>
 </div>
 <div class="row">
     <div class="col-md">
