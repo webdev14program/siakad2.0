@@ -127,14 +127,14 @@ class Model_guru extends CI_Model
     {
         $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,absenguru.ket,monthname(absenguru.date) AS bulan,year(absenguru.date) AS tahun,concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam ,
                 COUNT(IF(absenguru.ket='Masuk','Masuk',NULL)) AS ket_masuk,
-                COUNT(IF(concat(hour(absenguru.date),':',minute(absenguru.date))>'7:16' AND absenguru.ket='Masuk','Terlambat',NULL)) AS ket_terlambat,
+                COUNT(IF(concat(hour(absenguru.date),':',minute(absenguru.date))>'6:41' AND absenguru.ket='Masuk','Terlambat',NULL)) AS ket_terlambat,
                 COUNT(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar','Keluar',NULL)) AS ket_keluar,
                 COUNT(if(absenguru.ket='Sakit','Sakit',NULL)) AS ket_sakit,
                 COUNT(if(absenguru.ket='Ijin','Ijin',NULL)) AS ket_ijin
                 FROM `absenguru`
                 INNER JOIN guru
                 ON absenguru.kode=guru.kode
-                WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) LIKE '%$bulan_tahun%'
+                WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) ='$bulan_tahun'
                 GROUP BY guru.id
                 ORDER BY guru.id ASC;";
         $query = $this->db->query($sql);
