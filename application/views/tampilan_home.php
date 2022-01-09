@@ -146,19 +146,19 @@
                                 <th scope="row">1</th>
                                 <td>Vishnu Isvara, S. Kom</td>
                                 <td>Infrastruktur 1</td>
-                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Vishnu, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (INFRA 1)</a></td>
+                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 8567171540&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Vishnu, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (INFRA 1)</a></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>Usup Raharjo, S.Kom</td>
                                 <td>Infrastruktur 1</td>
-                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Usup, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (INFRA 2)</a></td>
+                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81818907802&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Usup, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (INFRA 2)</a></td>
                             </tr>
                             <tr>
                                 <th scope="row">3</th>
                                 <td>Rahmadika S Setiawan, S.Kom</td>
                                 <td>System 1</td>
-                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Usup, Saya ingin bertanya tentang pengisian INFRASTRUKTUR ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (SYSTEM 1)</a></td>
+                                <td><a class="btn btn-primary btn-sm btn-block" href="https://api.whatsapp.com/send?phone=62 81383814312&text=Assalamu'alaikum Selamat Pagi Siang Sore malam, Admin Pak Dika, Saya ingin bertanya tentang pengisian SYSTEM ABSENSI TUNAS HARAPAN" target="_blank">DEVELOPER (SYSTEM 1)</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -166,7 +166,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
