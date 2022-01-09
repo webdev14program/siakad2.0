@@ -141,6 +141,18 @@ class Model_guru extends CI_Model
         return $query->result_array();
     }
 
+    public function keterangan_tambahan()
+    {
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.timestamp,
+            day(keterangan_tambahan.timestamp) AS hari,monthname(keterangan_tambahan.timestamp) AS bulan, year(keterangan_tambahan.timestamp) AS tahun
+            FROM `keterangan_tambahan`
+            INNER JOIN guru
+            ON keterangan_tambahan.kode_guru=guru.kode
+            WHERE guru.jenjang='SMK'
+            ORDER BY keterangan_tambahan.timestamp DESC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
     public function keterangan_tambahanSMK()
     {
         $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.timestamp,
