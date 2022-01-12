@@ -129,8 +129,8 @@ jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* 
                 ON absenguru.kode=guru.kode
                 INNER JOIN jenjang
                 ON guru.jenjang=jenjang.kode_jenjang
-               WHERE concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) = '$bulan_tahun'
-               GROUP BY absenguru.date
+               WHERE concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) ='$bulan_tahun'
+               GROUP BY tanggal_bulan_tahun
                 ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
