@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Des 2021 pada 04.51
--- Versi server: 10.4.20-MariaDB
--- Versi PHP: 7.4.22
+-- Waktu pembuatan: 11 Jan 2022 pada 12.35
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,32 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `absenguru` (
-  `number` int(11) NOT NULL,
+  `id_absenGuru` int(11) NOT NULL,
   `kode` varchar(8) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `ket` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `absenguru`
---
-
-INSERT INTO `absenguru` (`number`, `kode`, `date`, `ket`) VALUES
-(1, 'Q', '2019-12-31 00:02:02', 'Masuk'),
-(2, 'Q', '2019-12-31 07:02:02', 'Keluar'),
-(4, 'B1', '2021-12-12 09:00:19', 'Keluar'),
-(5, 'B1', '2021-12-12 09:00:19', 'Keluar'),
-(6, 'B1', '2021-12-12 00:00:19', 'Masuk'),
-(7, 'B1', '2021-12-12 09:00:19', 'Masuk'),
-(8, 'S', '2020-01-06 12:18:15', 'Masuk'),
-(9, 'S', '2020-01-08 01:04:55', 'Keluar'),
-(11, 'B1', '2021-12-11 23:30:19', 'Masuk'),
-(12, 'B1', '2021-12-13 14:40:42', 'Keluar'),
-(17, 'B1', '2021-12-13 14:10:45', 'Keluar'),
-(18, 'B1', '2021-12-13 01:10:45', 'Masuk'),
-(19, 'D', '2021-12-13 00:10:45', 'Masuk'),
-(20, 'D', '2021-12-13 01:16:45', 'Masuk'),
-(21, 'A', '2021-12-17 16:21:43', 'Masuk');
 
 -- --------------------------------------------------------
 
@@ -69,22 +48,6 @@ CREATE TABLE `absensiswa` (
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `absensiswa`
---
-
-INSERT INTO `absensiswa` (`number`, `id`, `date`, `waktu`, `status`) VALUES
-(1, '176474', '2019-12-10 13:27:59', '00:00:00', 'Masuk'),
-(2, '176474', '2019-12-10 13:27:59', '00:00:00', 'Masuk'),
-(3, '19227', '2019-12-29 07:04:12', '00:00:00', 'Masuk'),
-(4, '19227', '2019-12-29 07:04:12', '00:00:00', 'Masuk'),
-(5, '197223', '2019-12-29 23:53:57', '00:00:00', 'Masuk'),
-(6, '197223', '2019-12-29 23:53:57', '00:00:00', 'Masuk'),
-(7, '176476', '2019-12-30 00:29:57', '00:00:00', 'Masuk'),
-(8, '176476', '2019-12-30 00:29:57', '00:00:00', 'Masuk'),
-(9, '176477', '2019-12-30 00:49:32', '00:00:00', 'Masuk'),
-(10, '176477', '2019-12-30 00:49:32', '00:00:00', 'Masuk');
-
 -- --------------------------------------------------------
 
 --
@@ -92,20 +55,21 @@ INSERT INTO `absensiswa` (`number`, `id`, `date`, `waktu`, `status`) VALUES
 --
 
 CREATE TABLE `auth` (
+  `id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(64) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `username` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
   `nama` varchar(256) NOT NULL,
-  `level` enum('admin','kurikulumSMK','kurikulumTK','kurikulumSD','kurikulumSMP','kurikulumSMA') NOT NULL
+  `level` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `auth`
 --
 
-INSERT INTO `auth` (`id_user`, `username`, `password`, `nama`, `level`) VALUES
-(1, 'admin', '0192023a7bbd73250516f069df18b500', '', 'admin'),
-(2, 'kurikulumSMK', '1d269722acfbf408b40c7af7b4619740', 'KURIKULUM SMK', 'kurikulumSMK');
+INSERT INTO `auth` (`id`, `username`, `password`, `id_user`, `nama`, `level`) VALUES
+(0, 'admin', '0192023a7bbd73250516f069df18b500', 1, '', 'admin'),
+(0, 'kurikulumSMK', '1d269722acfbf408b40c7af7b4619740', 2, 'KURIKULUM SMK', 'kurikulumSMK');
 
 -- --------------------------------------------------------
 
@@ -210,18 +174,19 @@ INSERT INTO `jenjang` (`id_jenjang`, `kode_jenjang`, `jenjang`) VALUES
 CREATE TABLE `jurusan` (
   `id` int(11) NOT NULL,
   `kode` varchar(8) NOT NULL,
-  `jurusan` varchar(128) NOT NULL
+  `jurusan` varchar(128) NOT NULL,
+  `jenjang` varchar(18) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `jurusan`
 --
 
-INSERT INTO `jurusan` (`id`, `kode`, `jurusan`) VALUES
-(101, 'AKL', 'AKUTANSI KEUANGAN LEMBAGA'),
-(202, 'BDP', 'BISNIS DARING PEMASARAN'),
-(303, 'OTKP', 'OTOMATISASI TATA KELOLA PERKANTORAN'),
-(404, 'TKJ', 'TEKNIK KOMPUTER DAN JARINGAN');
+INSERT INTO `jurusan` (`id`, `kode`, `jurusan`, `jenjang`) VALUES
+(101, 'AKL', 'AKUTANSI KEUANGAN LEMBAGA', 'SMK'),
+(202, 'BDP', 'BISNIS DARING PEMASARAN', 'SMK'),
+(303, 'OTKP', 'OTOMATISASI TATA KELOLA PERKANTORAN', 'SMK'),
+(404, 'TKJ', 'TEKNIK KOMPUTER DAN JARINGAN', 'SMK');
 
 -- --------------------------------------------------------
 
@@ -244,6 +209,7 @@ INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
 (101853, 'AKL', 'X AKL 1', 'SMK'),
 (102700, 'AKL', 'X AKL 2', 'SMK'),
 (103409, 'BDP', 'X BDP 1', 'SMK'),
+(104410, 'BDP', 'X BDP 2', 'SMK'),
 (105376, 'OTKP', 'X OTKP 1', 'SMK'),
 (106899, 'OTKP', 'X OTKP 2', 'SMK'),
 (107123, 'TKJ', 'X TKJ 1', 'SMK'),
@@ -266,19 +232,7 @@ INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
 (124270, 'OTKP', 'XII OTKP 2', 'SMK'),
 (125353, 'TKJ', 'XII TKJ 1', 'SMK'),
 (126854, 'TKJ', 'XII TKJ 2', 'SMK'),
-(127374, 'TKJ', 'XII TKJ 3', 'SMK'),
-(128456, 'X SMA', 'X IPA 1', 'SMA'),
-(129425, 'X SMA', 'X IPA 2', 'SMA'),
-(130253, 'X SMA', 'X IPS 1', 'SMA'),
-(131466, 'X SMA', 'X IPS 2', 'SMA'),
-(132126, 'XI SMA', 'XI IPA 1', 'SMA'),
-(133372, 'XI SMA', 'XI IPA 2', 'SMA'),
-(134494, 'XI SMA', 'XI IPS 1', 'SMA'),
-(135562, 'XI SMA', 'XI IPS 2', 'SMA'),
-(136529, 'XII SMA', 'XII IPA 1', 'SMA'),
-(137649, 'XII SMA', 'XII IPA 2', 'SMA'),
-(138283, 'XII SMA', 'XII IPS 1', 'SMA'),
-(139727, 'XII SMA', 'XII IPS 2', 'SMA');
+(127374, 'TKJ', 'XII TKJ 3', 'SMK');
 
 -- --------------------------------------------------------
 
@@ -288,20 +242,10 @@ INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
 
 CREATE TABLE `keterangan_tambahan` (
   `id_keterangan` int(11) NOT NULL,
-  `id_guru` varchar(16) NOT NULL,
+  `kode_guru` varchar(16) NOT NULL,
   `nama_keterangan` varchar(256) NOT NULL,
-  `bukti_fisik` varchar(512) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `keterangan_tambahan`
---
-
-INSERT INTO `keterangan_tambahan` (`id_keterangan`, `id_guru`, `nama_keterangan`, `bukti_fisik`, `timestamp`) VALUES
-(1001, '1379269', 'IJIN', '00305.jpg', '2021-12-19 09:42:52'),
-(1002, '1379269', 'SAKIT', '00306.jpg', '2021-12-19 09:42:52'),
-(1003, '1379269', 'SAKIT', '00306.jpg', '2021-12-20 09:42:52');
 
 -- --------------------------------------------------------
 
@@ -1720,19 +1664,13 @@ INSERT INTO `siswa` (`id`, `nama_siswa`, `kelas`, `jurusan`, `jenjang`) VALUES
 -- Indeks untuk tabel `absenguru`
 --
 ALTER TABLE `absenguru`
-  ADD PRIMARY KEY (`number`);
+  ADD PRIMARY KEY (`id_absenGuru`);
 
 --
 -- Indeks untuk tabel `absensiswa`
 --
 ALTER TABLE `absensiswa`
   ADD PRIMARY KEY (`number`);
-
---
--- Indeks untuk tabel `auth`
---
-ALTER TABLE `auth`
-  ADD PRIMARY KEY (`id_user`);
 
 --
 -- Indeks untuk tabel `guru`
@@ -1784,19 +1722,13 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT untuk tabel `absenguru`
 --
 ALTER TABLE `absenguru`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_absenGuru` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `absensiswa`
 --
 ALTER TABLE `absensiswa`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT untuk tabel `auth`
---
-ALTER TABLE `auth`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `jurusan`
@@ -1814,7 +1746,7 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT untuk tabel `keterangan_tambahan`
 --
 ALTER TABLE `keterangan_tambahan`
-  MODIFY `id_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
+  MODIFY `id_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=823770;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

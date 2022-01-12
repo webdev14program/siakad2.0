@@ -107,6 +107,34 @@ class Model_guru extends CI_Model
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+    public function HeaderAbsenGuruPerhariSMK($bulan_tahun)
+    {
+        $sql = "SELECT *, monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun, jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* FROM `absenguru`
+                INNER JOIN guru
+                ON absenguru.kode=guru.kode
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+               WHERE (concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date))) = '$bulan_tahun'
+               GROUP BY absenguru.date
+                ORDER BY absenguru.date DESC;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+    public function DataAbsenGuruPerhariSMK($bulan_tahun)
+    {
+        $sql = "SELECT *, day(absenguru.date) AS tanggal,monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,
+concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal_bulan_tahun,
+jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* FROM `absenguru`
+                INNER JOIN guru
+                ON absenguru.kode=guru.kode
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+               WHERE concat(guru.jenjang,monthname(absenguru.date),year(absenguru.date)) = '$bulan_tahun'
+               GROUP BY absenguru.date
+                ORDER BY absenguru.date DESC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 
     public function PrintHeaderGuruPerbulan($bulan_tahun)
     {
@@ -137,6 +165,35 @@ class Model_guru extends CI_Model
                 WHERE concat('SMK',monthname(absenguru.date),year(absenguru.date)) ='$bulan_tahun'
                 GROUP BY guru.id
                 ORDER BY guru.id ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function PrintHeaderGuruPerHari($hari_bulan_tahun)
+    {
+        $sql = "SELECT *, day(absenguru.date) AS tanggal,monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun, jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* FROM `absenguru`
+                INNER JOIN guru
+                ON absenguru.kode=guru.kode
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+               WHERE concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) = '$hari_bulan_tahun'
+              
+                ORDER BY absenguru.date DESC;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+    public function PrintDataGuruPerHari($hari_bulan_tahun)
+    {
+        $sql = "SELECT *, day(absenguru.date) AS tanggal,monthname(absenguru.date) as bulan, year(absenguru.date) AS tahun, concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS bulan_tahun,
+concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal_bulan_tahun,
+jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.*,jenjang.jenjang as nama_jenjang,hour(absenguru.date) AS jam, minute(absenguru.date) minutes FROM `absenguru`
+                INNER JOIN guru
+                ON absenguru.kode=guru.kode
+                INNER JOIN jenjang
+                ON guru.jenjang=jenjang.kode_jenjang
+               WHERE concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) = '$hari_bulan_tahun'
+               GROUP BY absenguru.date
+                ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

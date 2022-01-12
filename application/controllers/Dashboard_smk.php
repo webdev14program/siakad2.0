@@ -72,12 +72,16 @@ class Dashboard_smk extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function data_absen_siswa_perbulan()
+
+
+    public function data_absen_siswa_perhari($bulan_tahun)
     {
         $this->Model_keamanan->getKeamanan();
-        // $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulan();
+        $isi['header'] = $this->Model_guru->HeaderAbsenGuruPerhariSMK($bulan_tahun);
+        $isi['data'] = $this->Model_guru->DataAbsenGuruPerhariSMK($bulan_tahun);
 
-        $isi['content'] = 'SMK/Absensi/tampilan_absenSiswa_per_bulan';
+
+        $isi['content'] = 'SMK/Absensi/tampilan_absenSiswa_per_hari';
         $this->load->view('templates/header');
         $this->load->view('SMK/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
@@ -118,5 +122,15 @@ class Dashboard_smk extends CI_Controller
         $this->db->insert('keterangan_tambahan', $data);
         $this->db->insert(' absenguru', $data2);
         redirect('Dashboard_smk/keterangan_tambahan');
+    }
+
+    public function print_absen_guru_hari($hari_bulan_tahun)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_guru->PrintHeaderGuruPerHari($hari_bulan_tahun);
+        $isi['data'] = $this->Model_guru->PrintDataGuruPerHari($hari_bulan_tahun);
+
+
+        $this->load->view('SMK/Absensi/print_absenGuru_per_perhari', $isi);
     }
 }

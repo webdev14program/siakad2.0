@@ -1,7 +1,8 @@
 <div class="alert alert-success" role="alert">
-    <h4 class="text-center font-weight-bold text-uppercase">absen guru</h4>
+    <h4 class="text-center font-weight-bold text-uppercase">absen guru per hari <br> <?= $header['bulan'] ?></h4>
 </div>
-<div class="row">
+<a class="btn btn-success btn-sm text-uppercase" href="<?= base_url() ?>Dashboard_smk/data_absen_guru_perbulan">Kembali</a>
+<div class="row mt-3">
     <div class="col-md">
         <div class="card">
             <div class="card-body">
@@ -10,25 +11,22 @@
                         <thead>
                             <tr class="text-center text-uppercase font-weight-bold">
                                 <th scope="col">#</th>
-                                <th scope="col">Bulan</th>
-                                <th scope="col">Tahun</th>
+                                <th scope="col">Tanggal</th>
                                 <th scope="col">Jenjang</th>
                                 <th scope="col">perhari</th>
-                                <th scope="col">perbulan</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <?php
                                 $no = 1;
-                                foreach ($absen_guru_perbulan as $row) {
+                                foreach ($data as $row) {
                                 ?>
                                     <td class="text-center"><?php echo $no++; ?></td>
-                                    <td class=" text-center font-weight-bold"><?= $row['bulan']; ?></td>
-                                    <td class=" text-center font-weight-bold"><?= $row['tahun']; ?></td>
+                                    <td class=" text-center font-weight-bold"><?= $row['tanggal']; ?> <?= $row['bulan']; ?> <?= $row['tahun']; ?></td>
                                     <td class=" text-center font-weight-bold"><?= $row['nama_jenjang']; ?> (<?= $row['kode_jenjang']; ?>)</td>
-                                    <td class="text-center text-uppercase"><a class="btn btn-primary btn-sm" href="<?= base_url() ?>Dashboard_smk/data_absen_siswa_perhari/<?= $row['bulan_tahun'] ?>"><i class="fas fa-search"></i> details</a></td>
-                                    <td class="text-center text-uppercase"><a class="btn btn-danger btn-sm" href="<?= base_url() ?>Dashboard/print_absen_guru_perbulan/<?= $row['bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a></td>
+                                    <td class="text-center text-uppercase"><a class="btn btn-danger btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a></td>
                             </tr>
                         <?php } ?>
                         </tbody>
