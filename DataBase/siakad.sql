@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jan 2022 pada 12.35
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 7.4.27
+-- Generation Time: Jan 24, 2022 at 03:53 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absenguru`
+-- Table structure for table `absenguru`
 --
 
 CREATE TABLE `absenguru` (
@@ -34,10 +34,77 @@ CREATE TABLE `absenguru` (
   `ket` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `absenguru`
+--
+
+INSERT INTO `absenguru` (`id_absenGuru`, `kode`, `date`, `ket`) VALUES
+(1, 'B8', '2022-01-23 23:30:16', 'Masuk'),
+(2, 'T3', '2022-01-23 23:31:21', 'Masuk'),
+(3, 'A', '2022-01-23 23:37:48', 'Masuk'),
+(4, 'H', '2022-01-23 23:37:51', 'Masuk'),
+(5, 'TU1', '2022-01-23 23:38:25', 'Masuk'),
+(6, 'A7', '2022-01-23 23:38:34', 'Masuk'),
+(7, 'E', '2022-01-23 23:38:39', 'Masuk'),
+(8, 'A1', '2022-01-23 23:38:41', 'Masuk'),
+(9, 'B7', '2022-01-23 23:38:43', 'Masuk'),
+(10, 'A1', '2022-01-23 23:38:47', 'Masuk'),
+(11, 'c', '2022-01-23 23:39:01', 'Masuk'),
+(12, 'J', '2022-01-23 23:39:26', 'Masuk'),
+(13, 'B7', '2022-01-23 23:39:29', 'Masuk'),
+(14, 'x', '2022-01-23 23:39:32', 'Masuk'),
+(15, 'B4', '2022-01-23 23:39:53', 'Masuk'),
+(16, 'F', '2022-01-23 23:40:06', 'Masuk'),
+(17, 'W', '2022-01-23 23:40:18', 'Masuk'),
+(18, 'A9', '2022-01-23 23:41:10', 'Masuk'),
+(19, 'G', '2022-01-23 23:41:37', 'Masuk'),
+(20, 'A3', '2022-01-23 23:42:11', 'Masuk'),
+(21, 'Q', '2022-01-23 23:42:20', 'Masuk'),
+(1675565, '', '2022-01-24 07:22:06', 'Masuk'),
+(2827264, 'K', '2022-01-23 23:55:35', 'Masuk'),
+(3866850, 'Tu2', '2022-01-24 00:22:58', 'Masuk'),
+(5824378, 'TU2', '2022-01-24 07:22:40', 'Keluar'),
+(7202181, 'K', '2022-01-24 00:00:07', 'Masuk'),
+(7623026, 'Tu3', '2022-01-24 08:57:38', 'Keluar'),
+(8878597, 'TU3', '2022-01-24 00:25:12', 'Masuk'),
+(9479875, 'B1', '2022-01-23 23:42:24', 'Masuk'),
+(9479876, 'P', '2022-01-23 23:45:59', 'Masuk'),
+(9479877, 'v', '2022-01-23 23:47:33', 'Masuk'),
+(9479878, 'Z', '2022-01-23 23:47:40', 'Masuk'),
+(9479879, 'K', '2022-01-23 23:47:54', 'Masuk'),
+(9479880, 'R', '2022-01-23 23:51:32', 'Masuk'),
+(9479881, 'M', '2022-01-23 23:53:26', 'Masuk'),
+(9479882, 'c', '2022-01-23 23:57:36', 'Keluar'),
+(9479883, 'v', '2022-01-24 03:16:56', 'Masuk'),
+(9479884, 'B4', '2022-01-24 05:03:47', 'Keluar'),
+(9479885, 'A1', '2022-01-24 05:05:07', 'Keluar'),
+(9479886, 'B7', '2022-01-24 05:08:59', 'Keluar'),
+(9479887, 'W', '2022-01-24 05:14:14', 'Keluar'),
+(9479888, 'A7', '2022-01-24 05:15:40', 'Keluar'),
+(9479889, 'Z', '2022-01-24 05:33:50', 'Keluar'),
+(9479890, 'v ', '2022-01-24 05:40:41', 'Keluar'),
+(9479891, 'I', '2022-01-24 05:42:11', 'Keluar'),
+(9479892, 'K', '2022-01-24 05:46:39', 'Keluar'),
+(9479893, 'F', '2022-01-24 06:00:29', 'Keluar'),
+(9479894, 'K', '2022-01-24 06:00:41', 'Keluar'),
+(9479895, 'x', '2022-01-24 06:28:13', 'Keluar'),
+(9479896, 'Q', '2022-01-24 06:47:02', 'Keluar'),
+(9479897, 'J', '2022-01-24 07:35:23', 'Keluar'),
+(9479898, 'E', '2022-01-24 08:08:32', 'Keluar'),
+(9479899, 'M', '2022-01-24 08:09:04', 'Keluar'),
+(9479900, 'N', '2022-01-24 08:10:00', 'Keluar'),
+(9479901, 'L', '2022-01-24 08:47:57', 'Keluar'),
+(9479902, 'A', '2022-01-24 08:48:17', 'Keluar'),
+(9479903, 'TU1', '2022-01-24 08:57:43', 'Keluar'),
+(9479904, 'T3', '2022-01-24 10:18:03', 'Keluar'),
+(9479905, 'B8', '2022-01-24 10:20:04', 'Keluar'),
+(9479906, '101', '2022-01-24 14:43:53', 'Masuk'),
+(9479907, '101', '2022-01-24 14:43:53', 'Keluar');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absensiswa`
+-- Table structure for table `absensiswa`
 --
 
 CREATE TABLE `absensiswa` (
@@ -51,7 +118,7 @@ CREATE TABLE `absensiswa` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth`
+-- Table structure for table `auth`
 --
 
 CREATE TABLE `auth` (
@@ -64,7 +131,7 @@ CREATE TABLE `auth` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `auth`
+-- Dumping data for table `auth`
 --
 
 INSERT INTO `auth` (`id`, `username`, `password`, `id_user`, `nama`, `level`) VALUES
@@ -74,7 +141,7 @@ INSERT INTO `auth` (`id`, `username`, `password`, `id_user`, `nama`, `level`) VA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `guru`
+-- Table structure for table `guru`
 --
 
 CREATE TABLE `guru` (
@@ -89,63 +156,96 @@ CREATE TABLE `guru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `guru`
+-- Dumping data for table `guru`
 --
 
 INSERT INTO `guru` (`id`, `kode`, `nama`, `guru`, `jenis_guru`, `jenjang`, `username`, `password`) VALUES
-(1011074, 'A', 'Widodo, SE,M.M', 'Kepala Sekolah', ' - ', 'SMK', 'A', 'Widodo12345*'),
-(1025307, 'B', 'Winartono, S.H', 'Staff TU', ' - ', 'SMK', 'B', 'Winar12345*'),
-(1039106, 'C', 'Swiyono, SE', 'Wakasek Kesiswaan', 'Produktif BDP', 'SMK', 'C', 'Yono12345*'),
-(1041296, 'D', 'Dini Chrisnawati,S.Pd ', 'Wakasek Kurikulum', 'Produktif AKL', 'SMK', 'D', 'Dini12345*'),
-(1051573, 'E', 'Hary Puspitarini, M.Pd ', 'Wakasek Sarana Prasana', 'Umum', 'SMK', 'E', 'Hary12345*'),
-(1062332, 'F', 'Irfan, S.Pd                       ', 'Ketua Prodi OTKP', 'Produktif OTKP', 'SMK', 'F', 'Irfan12345*'),
-(1074996, 'G', 'Vishnu Isvara, S. Kom ', 'Ketua Prodi TKJ', 'Produktif TKJ', 'SMK', 'G', 'Vishnu12345*'),
-(1084128, 'H', 'Henri Wicaksono, S.E ', 'Ketua Prodi AKL', 'Produktif AKL', 'SMK', 'H', 'Henri12345*'),
-(1091957, 'I', 'Nofa Aji Zatmiko, S.Pd ', 'Ketua Prodi BDP', 'Produktif BDP', 'SMK', 'I', 'Nofa12345*'),
-(1104784, 'J', 'Nurul Huda, S.Ag', 'Operator Sekolah', 'Umum', 'SMK', 'J', 'Nurul12345*'),
-(1114979, 'K', 'Eko, S.S', 'Guru', 'Umum', 'SMK', 'K', 'Eko12345*'),
-(1124090, 'L', 'Sriyanti, S.Pd                 ', 'Guru', 'Produktif AKL', 'SMK', 'L', 'Yanti12345*'),
-(1131451, 'M', 'Ajizah Tri Lestari, S.Si  ', 'Guru', 'Umum', 'SMK', 'M', 'Isti12345*'),
-(1143755, 'N', 'Istiqomah, S.Pd', 'Guru', 'Umum', 'SMK', 'N', 'Tari12345*'),
-(1153622, 'O', 'Tugijono, S.Ag                ', 'Guru', 'Umum', 'SMK', 'O', 'Tugi12345*'),
-(1169988, 'P', 'Bambang Sumitro, S.Kom                              ', 'Guru', 'Produktif TKJ', 'SMK', 'P', 'Bams12345*'),
-(1176884, 'Q', 'Gutser Siburian, S.Pd     ', 'Guru', 'Umum', 'SMK', 'Q', 'Gutser12345*'),
-(1187169, 'R', 'Ugi Sistianto, S.Pd        ', 'Guru', 'Umum', 'SMK', 'R', 'Ugi12345*'),
-(1192445, 'S', 'Drs. Puji Waluyo, MM  ', 'Guru', 'Umum', 'SMK', 'S', 'Puji12345*'),
-(1205468, 'T', 'Vevy Yurizal, S.Pd', 'Guru', 'Umum', 'SMK', 'T', 'Vevy12345*'),
-(1214738, 'U', 'Suhendi, S.Pd', 'Guru', 'Umum', 'SMK', 'U', 'Hendi12345*'),
-(1225320, 'V', 'Siswanto, M.Pd', 'Guru', 'Umum', 'SMK', 'V', 'Sis12345*'),
-(1239373, 'W', 'Risma Harjanti                ', 'Guru', 'Umum', 'SMK', 'W', 'Risma12345*'),
-(1247722, 'X', 'Winarno, S.Pd', 'Guru', 'Umum', 'SMK', 'X', 'Nano12345*'),
-(1253257, 'Y', 'Yayah Syamsiah, M.Pd', 'Guru', 'Produktif BDP', 'SMK', 'Y', 'Yaya12345*'),
-(1269419, 'Z', 'Maria Menge, M.Pd   ', 'Guru', 'Produktif BDP', 'SMK', 'Z', 'Mary12345*'),
-(1273445, 'A1', 'Yuliar Sutan, S.Pd', 'Guru', 'Umum', 'SMK', 'A1', 'Yuliar12345*'),
-(1289034, 'A2', 'Esa Fathonah, S.Pd', 'Guru', 'Umum', 'SMK', 'A2', 'Esa12345*'),
-(1291170, 'A3', 'Priyono, S.Pd', 'Guru', 'Produktif OTKP', 'SMK', 'A3', 'Pri12345*'),
-(1305651, 'A4', 'Yike Diana Syaputri,S.Pd', 'Guru', 'Umum', 'SMK', 'A4', 'Yike12345*'),
-(1316866, 'A5', 'Eka Tiara Wirahayu, S.Pd', 'Guru', 'Umum', 'SMK', 'A5', 'Eka12345*'),
-(1323666, 'A6', 'Khalisa Qatrunada, S.Ag', 'Guru', 'Umum', 'SMK', 'A6', 'Nada12345*'),
-(1333883, 'A7', 'Lely Lianasari, S.Pd', 'Guru', 'Produktif OTKP', 'SMK', 'A7', 'Lely12345*'),
-(1343330, 'A8', 'Eky Nurbani, S.Psi', 'Guru', 'Umum', 'SMK', 'A8', 'Eky12345*'),
-(1354141, 'A9', 'Usup Raharjo, A.Md', 'Guru', 'Produktif TKJ', 'SMK', 'A9', 'Usup12345*'),
-(1365778, 'A10', 'Mufidah, S.E', 'Guru', 'Produktif AKL', 'SMK', 'A10', 'Fida12345*'),
-(1379269, 'B1', 'Rahmadika Surya S.Kom                             ', 'Guru', 'Produktif TKJ', 'SMK', 'B1', 'Dika12345*'),
-(1383900, 'B2', 'Abu Amar A, S.Pd', 'Guru', 'Umum', 'SMK', 'B2', 'Abu12345*'),
-(1398694, 'B2', 'Rabella Tria P, S.Pd ', 'Guru', 'Produktif OTKP', 'SMK', 'B2', 'Bela12345*'),
-(1405357, 'B3', 'Dayanti Wisnu Wardani, S.Pd', 'Guru', 'Produktif AKL', 'SMK', 'B3', 'Dayanti12345*'),
-(1417168, 'B4', 'Siti Maryam, S.Pd          ', 'Guru', 'Produktif BDP', 'SMK', 'B4', 'Maryam12345*'),
-(1425911, 'B5', 'Steven James, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B5', 'Steven12345*'),
-(1433654, 'B6', 'Tyas Ayu Maharani', 'Guru', 'Umum', 'SMK', 'B6', 'Tyas12345*'),
-(1444158, 'B7', 'Novia Putri Yude, S.Pd', 'Guru', 'Umum', 'SMK', 'B7', 'Vivi12345*'),
-(1451328, 'B8', 'Adilah Widiasti, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B8', 'Dilah12345*'),
-(1463029, 'T1', 'Danang', 'Teknisi', 'Produktif TKJ', 'SMK', 'T1', 'Danang12345*'),
-(1474053, 'T2', 'Marcellino Raditio', 'Teknisi', 'Produktif TKJ', 'SMK', 'T2', 'Marcel12345*'),
-(1489105, 'T3', 'Andika', 'Teknisi', 'Produktif TKJ', 'SMK', 'T3', 'Andika12345*');
+(101963, 'A', 'Widodo, SE,M.M', 'Kepala Sekolah', ' - ', 'SMK', 'A', '1234'),
+(102952, 'B', 'Winartono, S.H', 'Staff TU', ' - ', 'SMK', 'B', '1234'),
+(103704, 'C', 'Swiyono, SE', 'Wakasek Kesiswaan', 'Produktif BDP', 'SMK', 'C', '1234'),
+(104232, 'D', 'Dini Chrisnawati,S.Pd', 'Wakasek Kurikulum', 'Produktif AKL', 'SMK', 'D', '1234'),
+(105563, 'E', 'Hary Puspitarini, M.Pd', 'Wakasek Sarana Prasana', 'Umum', 'SMK', 'E', '1234'),
+(106663, 'F', 'Irfan, S.Pd', 'Ketua Prodi OTKP', 'Produktif OTKP', 'SMK', 'F', '1234'),
+(107257, 'G', 'Vishnu Isvara, S. Kom', 'Ketua Prodi TKJ', 'Produktif TKJ', 'SMK', 'G', '1234'),
+(108193, 'H', 'Henri Wicaksono, S.E ', 'Ketua Prodi AKL', 'Produktif AKL', 'SMK', 'H', '1234'),
+(109338, 'I', 'Nofa Aji Zatmiko, S.Pd', 'Ketua Prodi BDP', 'Produktif BDP', 'SMK', 'I', '1234'),
+(110863, 'J', 'Nurul Huda, S.Ag', 'Operator Sekolah', 'Umum', 'SMK', 'J', '1234'),
+(111816, 'K', 'Eko, S.S', 'Guru', 'Umum', 'SMK', 'K', '1234'),
+(112958, 'L', 'Sriyanti, S.Pd', 'Guru', 'Produktif AKL', 'SMK', 'L', '1234'),
+(113338, 'M', 'Ajizah Tri Lestari, S.Si', 'Guru', 'Umum', 'SMK', 'M', '1234'),
+(114540, 'N', 'Istiqomah, S.Pd', 'Guru', 'Umum', 'SMK', 'N', '1234'),
+(115989, 'O', 'Tugijono, S.Ag', 'Guru', 'Umum', 'SMK', 'O', '1234'),
+(116528, 'P', 'Bambang Sumitro, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'P', '1234'),
+(117394, 'Q', 'Gutser Siburian, S.Pd', 'Guru', 'Umum', 'SMK', 'Q', '1234'),
+(118239, 'R', 'Ugi Sistianto, S.Pd', 'Guru', 'Umum', 'SMK', 'R', '1234'),
+(119210, 'S', 'Drs. Puji Waluyo, MM', 'Guru', 'Umum', 'SMK', 'S', '1234'),
+(120121, 'T', 'Vevy Yurizal, S.Pd', 'Guru', 'Umum', 'SMK', 'T', '1234'),
+(121224, 'U', 'Suhendi, S.Pd', 'Guru', 'Umum', 'SMK', 'U', '1234'),
+(122992, 'V', 'Siswanto, M.Pd', 'Guru', 'Umum', 'SMK', 'V', '1234'),
+(123559, 'W', 'Risma Harjanti', 'Guru', 'Umum', 'SMK', 'W', '1234'),
+(124306, 'X', 'Winarno, S.Pd', 'Guru', 'Umum', 'SMK', 'X', '1234'),
+(125192, 'Y', 'Yayah Syamsiah, M.Pd', 'Guru', 'Produktif BDP', 'SMK', 'Y', '1234'),
+(126403, 'Z', 'Maria Menge, S.Pd, M,Pd', 'Guru', 'Produktif BDP', 'SMK', 'Z', '1234'),
+(127149, 'A1', 'Yuliar Sutan, S.Pd', 'Guru', 'Umum', 'SMK', 'A1', '1234'),
+(128119, 'A2', 'Esa Fathonah, S.Pd', 'Guru', 'Umum', 'SMK', 'A2', '1234'),
+(129236, 'A3', 'Priyono, S.Pd', 'Guru', 'Produktif OTKP', 'SMK', 'A3', '1234'),
+(130631, 'A4', 'Yike Diana Syaputri,S.Pd', 'Guru', 'Umum', 'SMK', 'A4', '1234'),
+(131300, 'A5', 'Eka Tiara Wirahayu, S.Pd', 'Guru', 'Umum', 'SMK', 'A5', '1234'),
+(132541, 'A6', 'Khalisa Qatrunada, S.Ag', 'Guru', 'Umum', 'SMK', 'A6', '1234'),
+(133346, 'A7', 'Lely Lianasari, S.Pd', 'Guru', 'Produktif OTKP', 'SMK', 'A7', '1234'),
+(134155, 'A8', 'Eky Nurbani, S.Psi', 'Guru', 'Umum', 'SMK', 'A8', '1234'),
+(135381, 'A9', 'Usup Raharjo, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'A9', '1234'),
+(136781, 'A10', 'Mufidah, S.E', 'Guru', 'Produktif AKL', 'SMK', 'A10', '1234'),
+(137759, 'B1', 'Rahmadika Surya S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B1', '1234'),
+(138160, 'B2', 'Abu Amar A, S.Pd', 'Guru', 'Umum', 'SMK', 'B2', '1234'),
+(139302, 'B3', 'Dayanti Wisnu Wardani, S.Pd', 'Guru', 'Produktif AKL', 'SMK', 'B3', '1234'),
+(140114, 'B4', 'Siti Maryam, S.Pd', 'Guru', 'Produktif BDP', 'SMK', 'B4', '1234'),
+(141517, 'B5', 'Tyas Ayu Maharani', 'Guru', 'Umum', 'SMK', 'B5', '1234'),
+(142833, 'B6', 'Novia Putri Yude, S.Pd', 'Guru', 'Umum', 'SMK', 'B6', '1234'),
+(143229, 'B7', 'Adilah Widiasti, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B7', '1234'),
+(144206, 'B8', 'Fernando Tjandra, S.Kom', 'Guru', 'Produktif TKJ', 'SMK', 'B8', '1234'),
+(145704, 'B9', 'Abu Ridho Aminullah, S.E', 'Guru', 'Produktif OTKP', 'SMK', 'B9', '1234'),
+(146610, 'T1', 'Danang', 'Teknisi', 'Produktif TKJ', 'SMK', 'T1', '1234'),
+(147740, 'T2', 'Marcellino Raditio', 'Teknisi', 'Produktif TKJ', 'SMK', 'T2', '1234'),
+(148846, 'T3', 'Andika', 'Teknisi', 'Produktif TKJ', 'SMK', 'T3', '1234'),
+(149363, 'TU1', 'Septiana Pajar Nurcahyati, S.Kom', 'TU', 'Tata Usaha', 'SMK', 'TU1', '1234'),
+(150216, 'TU2', 'Sri Hartati', 'TU', 'Tata Usaha', 'SMK', 'TU2', '1234'),
+(151410, 'TU3', 'Veronica Diah Oktaviani', 'TU', 'Tata Usaha', 'SMK', 'TU3', '1234'),
+(152841, '101', 'Siti Sundari, S.Pd., M.M.', 'Kepala Sekolah', ' - ', 'SMP', '101', '1234'),
+(153489, '102', 'Pradipta Arjunanta, S.Pd', 'Guru', 'Umum', 'SMP', '102', '1234'),
+(154171, '103', 'Ferni Fajarwati S.Pd.', 'Guru', 'Umum', 'SMP', '103', '1234'),
+(155619, '104', 'Kusdaryono, M.Th.', 'Guru', 'Umum', 'SMP', '104', '1234'),
+(156148, '105', 'Rokhyani Nur Setiarini, S.Pd.', 'Guru', 'Umum', 'SMP', '105', '1234'),
+(157691, '106', 'Bayu Fitriatmoko, S.E', 'Guru', 'Umum', 'SMP', '106', '1234'),
+(158516, '107', 'Novara Indah Rusyana, S.Pd.', 'Guru', 'Umum', 'SMP', '107', '1234'),
+(159350, '108', 'Desman Manik, S.Pd', 'Guru', 'Umum', 'SMP', '108', '1234'),
+(160867, '109', 'Emilia Sari, M.Pd', 'Guru', 'Umum', 'SMP', '109', '1234'),
+(161663, '110', 'Syaiful Anwar, S.Pd', 'Guru', 'Umum', 'SMP', '110', '1234'),
+(162440, '111', 'Istighfria Romadlonawati, S.Pd', 'Guru', 'Umum', 'SMP', '111', '1234'),
+(163220, '112', 'Ostina Lumban Batu S. Pd', 'Guru', 'Umum', 'SMP', '112', '1234'),
+(164274, '113', 'Fransiska Dwi Yulia', 'Guru', 'Umum', 'SMP', '113', '1234'),
+(165633, '114', 'Niken Prasetyowati ', 'Guru', 'Umum', 'SMP', '114', '1234'),
+(166375, '115', 'Agus Sigit Pamungkas, S. Pd', 'Guru', 'Umum', 'SMP', '115', '1234'),
+(167216, '116', 'supangadi', 'Guru', 'Umum', 'SMP', '116', '1234'),
+(168919, '117', 'Siti Sundari, S.Pd., M.M.', 'Guru', 'Umum', 'SMP', '117', '1234'),
+(169643, 'SD01', 'Apriyatin Supriningsing, S.Pd', 'Kepala Sekolah', ' - ', 'SD', 'SD01', '1234'),
+(170256, 'SD02', 'Bukhori, S.Thl', 'Guru', 'Umum', 'SD', 'SD02', '1234'),
+(171999, 'SD03', 'Arif ridwansyah, S.pd', 'Guru', 'Umum', 'SD', 'SD03', '1234'),
+(172644, 'SD04', 'Sri Widyastuti', 'Guru', 'Umum', 'SD', 'SD04', '1234'),
+(173357, 'SD05', 'Eka Sarah Septriani, S.Pd', 'Guru', 'Umum', 'SD', 'SD05', '1234'),
+(174609, 'SD06', 'Suryeti, S.Pd', 'Guru', 'Umum', 'SD', 'SD06', '1234'),
+(175594, 'SD07', 'Najah Khodijah, S.Pd', 'Guru', 'Umum', 'SD', 'SD07', '1234'),
+(176199, 'SD08', 'Elisabeth Susi', 'Guru', 'Umum', 'SD', 'SD08', '1234'),
+(177540, 'SD09', 'Syahrul Kurniawan, S.Pd', 'Guru', 'Umum', 'SD', 'SD09', '1234'),
+(178170, 'SD10', 'Jeffry Hadi Wira Witudha, S.Pd', 'Guru', 'Umum', 'SD', 'SD10', '1234'),
+(179300, 'SD11', 'Suginah', 'Guru', 'Umum', 'SD', 'SD11', '1234'),
+(180638, 'SD12', 'Fiqih Fadilah, S.Pd', 'Guru', 'Umum', 'SD', 'SD12', '1234'),
+(181825, 'SD13', 'Abdul Nardam', 'Guru', 'Umum', 'SD', 'SD13', '1234');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenjang`
+-- Table structure for table `jenjang`
 --
 
 CREATE TABLE `jenjang` (
@@ -155,7 +255,7 @@ CREATE TABLE `jenjang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jenjang`
+-- Dumping data for table `jenjang`
 --
 
 INSERT INTO `jenjang` (`id_jenjang`, `kode_jenjang`, `jenjang`) VALUES
@@ -168,7 +268,7 @@ INSERT INTO `jenjang` (`id_jenjang`, `kode_jenjang`, `jenjang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jurusan`
+-- Table structure for table `jurusan`
 --
 
 CREATE TABLE `jurusan` (
@@ -179,7 +279,7 @@ CREATE TABLE `jurusan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `jurusan`
+-- Dumping data for table `jurusan`
 --
 
 INSERT INTO `jurusan` (`id`, `kode`, `jurusan`, `jenjang`) VALUES
@@ -191,7 +291,7 @@ INSERT INTO `jurusan` (`id`, `kode`, `jurusan`, `jenjang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -202,7 +302,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
@@ -237,7 +337,7 @@ INSERT INTO `kelas` (`id`, `kode`, `kelas`, `jenjang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keterangan_tambahan`
+-- Table structure for table `keterangan_tambahan`
 --
 
 CREATE TABLE `keterangan_tambahan` (
@@ -250,7 +350,7 @@ CREATE TABLE `keterangan_tambahan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mapel`
+-- Table structure for table `mapel`
 --
 
 CREATE TABLE `mapel` (
@@ -259,7 +359,7 @@ CREATE TABLE `mapel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mapel`
+-- Dumping data for table `mapel`
 --
 
 INSERT INTO `mapel` (`id_mapel`, `nama_mapel`) VALUES
@@ -631,7 +731,7 @@ INSERT INTO `mapel` (`id_mapel`, `nama_mapel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswa`
+-- Table structure for table `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -643,7 +743,7 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `siswa`
+-- Dumping data for table `siswa`
 --
 
 INSERT INTO `siswa` (`id`, `nama_siswa`, `kelas`, `jurusan`, `jenjang`) VALUES
@@ -1661,89 +1761,89 @@ INSERT INTO `siswa` (`id`, `nama_siswa`, `kelas`, `jurusan`, `jenjang`) VALUES
 --
 
 --
--- Indeks untuk tabel `absenguru`
+-- Indexes for table `absenguru`
 --
 ALTER TABLE `absenguru`
   ADD PRIMARY KEY (`id_absenGuru`);
 
 --
--- Indeks untuk tabel `absensiswa`
+-- Indexes for table `absensiswa`
 --
 ALTER TABLE `absensiswa`
   ADD PRIMARY KEY (`number`);
 
 --
--- Indeks untuk tabel `guru`
+-- Indexes for table `guru`
 --
 ALTER TABLE `guru`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jenjang`
+-- Indexes for table `jenjang`
 --
 ALTER TABLE `jenjang`
   ADD PRIMARY KEY (`id_jenjang`);
 
 --
--- Indeks untuk tabel `jurusan`
+-- Indexes for table `jurusan`
 --
 ALTER TABLE `jurusan`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Indeks untuk tabel `keterangan_tambahan`
+-- Indexes for table `keterangan_tambahan`
 --
 ALTER TABLE `keterangan_tambahan`
   ADD PRIMARY KEY (`id_keterangan`);
 
 --
--- Indeks untuk tabel `mapel`
+-- Indexes for table `mapel`
 --
 ALTER TABLE `mapel`
   ADD PRIMARY KEY (`id_mapel`);
 
 --
--- Indeks untuk tabel `siswa`
+-- Indexes for table `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `absenguru`
+-- AUTO_INCREMENT for table `absenguru`
 --
 ALTER TABLE `absenguru`
-  MODIFY `id_absenGuru` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_absenGuru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9479908;
 
 --
--- AUTO_INCREMENT untuk tabel `absensiswa`
+-- AUTO_INCREMENT for table `absensiswa`
 --
 ALTER TABLE `absensiswa`
   MODIFY `number` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jurusan`
+-- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=708;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139728;
 
 --
--- AUTO_INCREMENT untuk tabel `keterangan_tambahan`
+-- AUTO_INCREMENT for table `keterangan_tambahan`
 --
 ALTER TABLE `keterangan_tambahan`
   MODIFY `id_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=823770;
