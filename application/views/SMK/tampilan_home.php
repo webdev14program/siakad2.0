@@ -54,7 +54,7 @@
                     <tbody>
                         <tr>
                             <td>Nama Sekolah </td>
-                            <td>: SMK Tunas Harapan</td>
+                            <td class="text-uppercase">: SMK Tunas Harapan</td>
                         </tr>
                         <tr>
                             <td>NPSN </td>

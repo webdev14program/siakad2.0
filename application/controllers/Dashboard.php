@@ -136,7 +136,33 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
- 
+    public function masalah_absen()
+    {
+        $this->load->view('masalah_absen/masalah_absen');
+    }
+
+    public function simpan_masalah_absen()
+    {
+        $temp = rand(1000000, 9999999);
+        $kode_guru = $this->input->post('kode_guru');
+        $status = $this->input->post('status');
+
+        $data = array(
+            'id_absenGuru' => $temp,
+            'kode' => $kode_guru,
+            'ket' => $status,
+        );
+
+        $this->db->insert('absenguru', $data);
+        redirect('Dashboard/berhasil_basen');
+    }
+
+    public function berhasil_basen()
+    {
+        $this->load->view('masalah_absen/berhasil_absen');
+    }
+
+
     public function logout()
     {
         $this->session->sess_destroy();

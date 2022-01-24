@@ -8,14 +8,7 @@
     </div>
 </div>
 <div class="row mt-2 mb-2">
-    <div class="col-md">
-        <div class="card bg-primary">
-            <div class="card-body">
-                <h5 class="text-center text-uppercase text-white font-weight-bold">guru tk</h5>
-                <h5 class="text-center text-uppercase text-white font-weight-bold"><?= $guru_tk ?> guru </h5>
-            </div>
-        </div>
-    </div>
+
     <div class="col-md">
         <div class="card bg-danger">
             <div class="card-body">
@@ -56,31 +49,21 @@
     <div class="col-md mt-2">
         <div class="card">
             <div class="card-header bg-primary">
-                <h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Identitas Sekolah</h5>
+                <h5 class="font-weight-bolder text-white" style="text-transform: uppercase;">Identitas Intansi</h5>
             </div>
             <div class="card-body">
                 <table class="table table-border">
                     <tbody>
                         <tr>
-                            <td>Nama Sekolah </td>
-                            <td>: SMK Tunas Harapan</td>
+                            <td>Nama Intansi</td>
+                            <td class="text-uppercase">: perguruan tunas harapan swadharma</td>
                         </tr>
-                        <tr>
-                            <td>NPSN </td>
-                            <td>: 20101484</td>
-                        </tr>
+
                         <tr>
                             <td>Alamat </td>
                             <td>: JL. KOMP. BNI 46 PESING</td>
                         </tr>
-                        <tr>
-                            <td>Email </td>
-                            <td>: admin@smkth-jakbar.com</td>
-                        </tr>
-                        <tr>
-                            <td>Website </td>
-                            <td>: smkth-jakbar.com</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
