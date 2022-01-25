@@ -74,14 +74,14 @@ class Dashboard_smk extends CI_Controller
 
 
 
-    public function data_absen_siswa_perhari($bulan_tahun)
+    public function data_absen_guru_perhari($bulan_tahun)
     {
         $this->Model_keamanan->getKeamanan();
         $isi['header'] = $this->Model_guru->HeaderAbsenGuruPerhariSMK($bulan_tahun);
         $isi['data'] = $this->Model_guru->DataAbsenGuruPerhariSMK($bulan_tahun);
 
 
-        $isi['content'] = 'SMK/Absensi/tampilan_absenSiswa_per_hari';
+        $isi['content'] = 'SMK/Absensi/tampilan_absenGuru_per_hari';
         $this->load->view('templates/header');
         $this->load->view('SMK/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
@@ -124,7 +124,7 @@ class Dashboard_smk extends CI_Controller
         redirect('Dashboard_smk/keterangan_tambahan');
     }
 
-    public function print_absen_guru_hari($hari_bulan_tahun)
+    public function print_absen_guru_hari_masuk($hari_bulan_tahun)
     {
         $this->Model_keamanan->getKeamanan();
         $isi['header'] = $this->Model_guru->PrintHeaderGuruPerHari($hari_bulan_tahun);

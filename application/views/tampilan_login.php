@@ -36,7 +36,7 @@
                         <div class="text-center mt-3 text-uppercase font-weight-bold ">
                             <h4>Sistem Informasi Akademik</h4>
                             <h4>perguruan tunas harapan swadharma</h4>
-                            <h4 class="text-white font-weight-bold bg-danger">beta test 2.0</h4>
+                            <h4 class="text-white font-weight-bold bg-success">VERSION 1.0 PATCH 1.1</h4>
                         </div>
                         <div class="row">
                             <div class="col-lg-5 d-none d-lg-block">
