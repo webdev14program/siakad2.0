@@ -13,7 +13,8 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Jenjang</th>
-                                <th scope="col">perhari</th>
+                                <th scope="col">perhari (masuk)</th>
+                                <th scope="col">perhari (keluar)</th>
 
                             </tr>
                         </thead>
@@ -26,7 +27,8 @@
                                     <td class="text-center"><?php echo $no++; ?></td>
                                     <td class=" text-center font-weight-bold"><?= $row['tanggal']; ?> <?= $row['bulan']; ?> <?= $row['tahun']; ?></td>
                                     <td class=" text-center font-weight-bold"><?= $row['nama_jenjang']; ?> (<?= $row['kode_jenjang']; ?>)</td>
-                                    <td class="text-center text-uppercase"><a class="btn btn-danger btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a></td>
+                                    <td class="text-center text-uppercase"><a class="btn btn-danger btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_masuk/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a></td>
+                                    <td class="text-center text-uppercase"><a class="btn btn-warning btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_keluar/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a></td>
                             </tr>
                         <?php } ?>
                         </tbody>
