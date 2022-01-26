@@ -37,9 +37,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Data Master</h6>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_guru">Master Guru</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_jurusan">Master Jurusan</a>
+                    <!-- <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a> -->
+                    <!-- <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_jurusan">Master Jurusan</a> -->
                 </div>
             </div>
         </li>
@@ -58,11 +58,11 @@
                 <i class="fas fa-user-secret"></i>
                 <span>Guru</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>Dashboard/data_absen_siswa_perbulan">
                 <i class="fas fa-user-graduate"></i>
                 <span>Siswa</span></a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>Dashboard/keterangan_tambahan">
                 <i class="fas fa-calendar-week"></i>

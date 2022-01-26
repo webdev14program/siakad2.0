@@ -29,6 +29,10 @@ class Auth extends CI_Controller
                 redirect('Dashboard_smk');
             } elseif ($sess_data['level'] == 'kurikulumSMA') {
                 redirect('Dashboard_sma');
+            } elseif ($sess_data['level'] == 'kurikulumSMP') {
+                redirect('Dashboard_smp');
+            } elseif ($sess_data['level'] == 'kurikulumSD') {
+                redirect('Dashboard_sd');
             } {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Username dan Password salah
