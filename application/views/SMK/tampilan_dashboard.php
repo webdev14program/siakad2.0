@@ -37,9 +37,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Data Master</h6>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_guru">Data Guru</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_siswa">Data Siswa</a>
+                    <!-- <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_siswa">Data Siswa</a>
                     <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_kelas">Data Kelas</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_jurusan">Master Jurusan</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_jurusan">Master Jurusan</a> -->
                 </div>
             </div>
         </li>
@@ -58,11 +58,11 @@
                 <i class="fas fa-user-secret"></i>
                 <span>Guru</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>Dashboard_smk/data_absen_siswa_perbulan">
                 <i class="fas fa-user-graduate"></i>
                 <span>Siswa</span></a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>Dashboard_smk/keterangan_tambahan">
                 <i class="fas fa-calendar-week"></i>
@@ -103,7 +103,7 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN PUSAT</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN SMK</span>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

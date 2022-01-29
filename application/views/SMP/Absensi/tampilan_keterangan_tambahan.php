@@ -54,13 +54,13 @@
                 <h5 class="modal-title text-uppercase font-weight-bold text-white" id="exampleModalLabel">tambah keterangan absen</h5>
             </div>
             <div class="modal-body">
-                <?= form_open_multipart('Dashboard/upload_keterangan_tambahan'); ?>
+                <?= form_open_multipart('Dashboard_sma/upload_keterangan_tambahan'); ?>
                 <div class="form-group">
                     <label>GURU</label>
                     <select class="form-control" name="kode">
                         <OPtion class="bg-info text-white" disabled>PILIH GURU</OPtion>
                         <?php foreach ($guru as $row) { ?>
-                            <option value="<?= $row['kode']; ?>"> <?= $row['jenjang']; ?> | <?= $row['nama']; ?> </option>
+                            <option value="<?= $row['kode']; ?>">| <?= $row['id']; ?> | <?= $row['nama']; ?> | </option>
                         <?php } ?>
                     </select>
                 </div>

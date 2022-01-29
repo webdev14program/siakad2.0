@@ -64,7 +64,7 @@
                                 foreach ($data_guru as $row) {
                                 ?>
                                     <td class="text-center"><?php echo $no++; ?></td>
-                                    <td class=" text-center font-weight-bold"><?= $row['nama']; ?></td>
+                                    <td class=" text-center font-weight-bold text-uppercase"><?= $row['nama']; ?></td>
                                     <td class=" text-center"><?= $row['username']; ?></td>
                                     <td class=" text-center"><?= $row['password']; ?></td>
                             </tr>

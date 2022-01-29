@@ -50,7 +50,6 @@
                         <th scope="col">nama guru</th>
                         <th scope="col">Jam</th>
                         <th scope="col">status absen</th>
-                        <th scope="col">status lewat terlambat</th>
                     </tr>
                 </thead>
                 <tbody class="text-uppercase font-weight-bold">
@@ -63,8 +62,8 @@
                             <td class=" text-center"><?= $row['id']; ?></td>
                             <td class=" "><?= $row['nama']; ?></td>
                             <td class="text-center "><?= $row['jam']; ?></td>
-                            <td class="text-center "><?= $row['status_absen_masuk']; ?></td>
-                            <td class="text-center "><?= $row['status_lewat_absen_masuk']; ?></td>
+                            <td class="text-center "><?= $row['status_keluar']; ?></td>
+
                     </tr>
                 <?php } ?>
                 </tbody>

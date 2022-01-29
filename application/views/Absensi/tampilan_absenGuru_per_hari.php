@@ -1,7 +1,7 @@
 <div class="alert alert-success" role="alert">
     <h4 class="text-center font-weight-bold text-uppercase">absen guru per hari <br> <?= $header['bulan'] ?></h4>
 </div>
-<a class="btn btn-success btn-sm text-uppercase" href="<?= base_url() ?>Dashboard_smk/data_absen_guru_perbulan">Kembali</a>
+<a class="btn btn-success btn-sm text-uppercase" href="<?= base_url() ?>Dashboard/data_absen_guru_perbulan">Kembali</a>
 <div class="row mt-3">
     <div class="col-md">
         <div class="card">
@@ -29,7 +29,7 @@
                                     <td class=" text-center font-weight-bold"><?= $row['nama_jenjang']; ?> (<?= $row['kode_jenjang']; ?>)</td>
                                     <td class="text-center text-uppercase">
                                         <a class="btn btn-danger btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_masuk/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a>
-                                        <!-- <a class="btn btn-primary btn-sm disabled" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_masuk/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-search"></i> Detail</a> -->
+                                        <!-- <a class="btn btn-primary btn-sm" href="<?= base_url() ?>Dashboard/detail_absen_guru_hari_masuk/<?= $row['tanggal_bulan_tahun'] ?>"><i class="fas fa-search"></i> Detail</a> -->
                                     </td>
                                     <td class="text-center text-uppercase">
                                         <a class="btn btn-warning btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_keluar/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a>

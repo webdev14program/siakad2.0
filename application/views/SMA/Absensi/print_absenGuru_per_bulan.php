@@ -25,17 +25,13 @@
                             <td class="font-weight-bold">: absensi V2.0 perguruan tunas harapan swadharma </td>
                         </tr>
                         <tr>
-                            <td>Tanggal</td>
-                            <td class="font-weight-bold">: <?= $header['hari'] ?> <?= $header['bulan'] ?> <?= $header['tahun'] ?></td>
+                            <td>Bulan Tahun</td>
+                            <td class="font-weight-bold">: <?= $header['bulan'] ?> <?= $header['tahun'] ?></td>
                         </tr>
 
                         <tr>
                             <td>SEKOLAH</td>
                             <td class="font-weight-bold">: perguruan tunas harapan swadharma (<?= $header['jenjang'] ?>)</td>
-                        </tr>
-                        <tr>
-                            <td>STATUS ABSEN</td>
-                            <td class="font-weight-bold">: ABSENSI <?= $header['ket'] ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,23 +44,29 @@
                         <th scope="col">#</th>
                         <th scope="col">id guru</th>
                         <th scope="col">nama guru</th>
-                        <th scope="col">Jam</th>
-                        <th scope="col">status absen</th>
-                        <th scope="col">status lewat terlambat</th>
+                        <th scope="col">jenjang</th>
+                        <th scope="col">absen masuk</th>
+                        <th scope="col">absen keluar</th>
+                        <th scope="col">terlambat</th>
+                        <th scope="col">sakit</th>
+                        <th scope="col">ijin</th>
                     </tr>
                 </thead>
                 <tbody class="text-uppercase font-weight-bold">
                     <tr>
                         <?php
                         $no = 1;
-                        foreach ($data as $row) {
+                        foreach ($data_absen_perJenjang as $row) {
                         ?>
                             <td class="text-center"><?php echo $no++; ?></td>
                             <td class=" text-center"><?= $row['id']; ?></td>
                             <td class=" "><?= $row['nama']; ?></td>
-                            <td class="text-center "><?= $row['jam']; ?></td>
-                            <td class="text-center "><?= $row['status_absen_masuk']; ?></td>
-                            <td class="text-center "><?= $row['status_lewat_absen_masuk']; ?></td>
+                            <td class=" text-center"><?= $row['jenjang']; ?></td>
+                            <td class=" text-center"><?= $row['ket_masuk']; ?></td>
+                            <td class=" text-center"><?= $row['ket_keluar']; ?></td>
+                            <td class=" text-center"><?= $row['ket_terlambat']; ?></td>
+                            <td class=" text-center"><?= $row['ket_sakit']; ?></td>
+                            <td class=" text-center"><?= $row['ket_ijin']; ?></td>
                     </tr>
                 <?php } ?>
                 </tbody>

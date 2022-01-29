@@ -133,4 +133,14 @@ class Dashboard_smk extends CI_Controller
 
         $this->load->view('SMK/Absensi/print_absenGuru_per_perhari', $isi);
     }
+
+    public function print_absen_guru_hari_keluar($hari_bulan_tahun)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_guru->PrintHeaderGuruPerHarKeluar($hari_bulan_tahun);
+        $isi['data'] = $this->Model_guru->PrintDataGuruPerHariKeluar($hari_bulan_tahun);
+
+
+        $this->load->view('SMK/Absensi/print_absenGuru_per_perhari_keluar', $isi);
+    }
 }

@@ -1,30 +1,30 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard_sma extends CI_Controller
+class Dashboard_smp extends CI_Controller
 {
 
     public function index()
     {
         $this->Model_keamanan->getKeamanan();
         // $isi['siswa_smk'] = $this->Model_siswa->countSiswaSMK();
-        $isi['guru_sma'] = $this->Model_guru->countGuruSMA();
+        $isi['guru_smp'] = $this->Model_guru->countGuruSMP();
         // $isi['jurusan_smk'] = $this->Model_jurusan->countJurusanSMK();
         // $isi['kelas_smk'] = $this->Model_kelas->countKelasSMK();
-        $isi['content'] = 'SMA/tampilan_home';
+        $isi['content'] = 'SMP/tampilan_home';
         $this->load->view('templates/header');
-        $this->load->view('SMA/tampilan_dashboard', $isi);
+        $this->load->view('SMP/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
     public function data_guru()
     {
         $this->Model_keamanan->getKeamanan();
-        $isi['data_guru'] = $this->Model_guru->DataGuruSMA();
+        $isi['data_guru'] = $this->Model_guru->DataGuruSMP();
 
-        $isi['content'] = 'SMA/tampilan_master_guru';
+        $isi['content'] = 'SMP/tampilan_master_guru';
         $this->load->view('templates/header');
-        $this->load->view('SMA/tampilan_dashboard', $isi);
+        $this->load->view('SMP/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -64,11 +64,11 @@ class Dashboard_sma extends CI_Controller
     public function data_absen_guru_perbulan()
     {
         $this->Model_keamanan->getKeamanan();
-        $isi['absen_guru_perbulan'] = $this->Model_guru->absenGuruPerbulanSMA();
+        $isi['absen_guru_perbulan'] = $this->Model_guru->absenGuruPerbulanSMP();
 
-        $isi['content'] = 'SMA/Absensi/tampilan_absenGuru_per_bulan';
+        $isi['content'] = 'SMP/Absensi/tampilan_absenGuru_per_bulan';
         $this->load->view('templates/header');
-        $this->load->view('SMA/tampilan_dashboard', $isi);
+        $this->load->view('SMP/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -77,13 +77,13 @@ class Dashboard_sma extends CI_Controller
     public function data_absen_guru_perhari($bulan_tahun)
     {
         $this->Model_keamanan->getKeamanan();
-        $isi['header'] = $this->Model_guru->HeaderAbsenGuruPerhariSMA($bulan_tahun);
-        $isi['data'] = $this->Model_guru->DataAbsenGuruPerhariSMA($bulan_tahun);
+        $isi['header'] = $this->Model_guru->HeaderAbsenGuruPerhariSMP($bulan_tahun);
+        $isi['data'] = $this->Model_guru->DataAbsenGuruPerhariSMP($bulan_tahun);
 
 
-        $isi['content'] = 'SMA/Absensi/tampilan_absenGuru_per_hari';
+        $isi['content'] = 'SMP/Absensi/tampilan_absenGuru_per_hari';
         $this->load->view('templates/header');
-        $this->load->view('SMA/tampilan_dashboard', $isi);
+        $this->load->view('SMP/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -92,13 +92,13 @@ class Dashboard_sma extends CI_Controller
         $this->Model_keamanan->getKeamanan();
 
         // Drop Down
-        $isi['guru'] = $this->Model_guru->DataGuruSMA();
+        $isi['guru'] = $this->Model_guru->DataGuruSMP();
 
-        $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahanSMA();
+        $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahanSMP();
 
-        $isi['content'] = 'SMA/Absensi/tampilan_keterangan_tambahan';
+        $isi['content'] = 'SMP/Absensi/tampilan_keterangan_tambahan';
         $this->load->view('templates/header');
-        $this->load->view('SMA/tampilan_dashboard', $isi);
+        $this->load->view('SMP/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -121,7 +121,7 @@ class Dashboard_sma extends CI_Controller
 
         $this->db->insert('keterangan_tambahan', $data);
         $this->db->insert(' absenguru', $data2);
-        redirect('Dashboard_sma/keterangan_tambahan');
+        redirect('Dashboard_smp/keterangan_tambahan');
     }
 
     public function print_absen_guru_hari_masuk($hari_bulan_tahun)

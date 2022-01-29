@@ -16,7 +16,7 @@
                                 <th scope="col">Nama Guru</th>
                                 <th scope="col">Guru</th>
                                 <th scope="col">Jenis GUru</th>
-                                <th scope="col">Unit</th>
+                                <th scope="col">Uni</th>
                                 <!-- <th scope="col">Aksi</th> -->
                             </tr>
                         </thead>

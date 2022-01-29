@@ -5,8 +5,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard">
-            <div class="sidebar-brand-text mx-3">ADMIN PUSAT</div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard_smk">
+            <div class="sidebar-brand-text mx-3">KURIKULUM <br>SMA</div>
         </a>
 
         <!-- Divider -->
@@ -14,7 +14,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_sma">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -36,10 +36,10 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">List Data Master</h6>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_guru">Master Guru</a>
-                    <!-- <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_siswa">Master Siswa</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_kelas">Master Kelas</a>
-                    <a class="collapse-item" href="<?= base_url() ?>Dashboard/master_jurusan">Master Jurusan</a> -->
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_sma/data_guru">Data Guru</a>
+                    <!-- <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_siswa">Data Siswa</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_kelas">Data Kelas</a>
+                    <a class="collapse-item" href="<?= base_url() ?>Dashboard_smk/data_jurusan">Master Jurusan</a> -->
                 </div>
             </div>
         </li>
@@ -54,17 +54,17 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/data_absen_guru_perbulan">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_sma/data_absen_guru_perbulan">
                 <i class="fas fa-user-secret"></i>
                 <span>Guru</span></a>
         </li>
         <!-- <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/data_absen_siswa_perbulan">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_smk/data_absen_siswa_perbulan">
                 <i class="fas fa-user-graduate"></i>
                 <span>Siswa</span></a>
         </li> -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/keterangan_tambahan">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_sma/keterangan_tambahan">
                 <i class="fas fa-calendar-week"></i>
                 <span>Keterangan Tambahan</span></a>
         </li>
@@ -103,7 +103,7 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN PUSAT</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ADMIN SMA</span>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -133,8 +133,8 @@
         <footer class="sticky-footer bg-warning ">
             <div class="container my-auto">
                 <div class="copyright text-center text-white my-auto">
-                    <h5 class="text-center font-weight-bold text-uppercase">Copyright &copy; Perguruan Tunas Harapan swadarma</h5>
-                    <h5 class="text-center text-white font-weight-bold text-uppercase">Design By Produktif TEFA SMK TUNAS harapan</h5>
+                    <h6 class="text-center font-weight-bold text-uppercase">Copyright &copy; Perguruan Tunas Harapan swadarma</h6>
+                    <h6 class="text-center text-white font-weight-bold text-uppercase">Design By Produktif TEFA SMK TUNAS harapan</h6>
                 </div>
             </div>
         </footer>

@@ -105,6 +105,32 @@ class Dashboard extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function data_absen_guru_perhari($bulan_tahun)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_guru->HeaderAbsenGuruPerhariSMK($bulan_tahun);
+        $isi['data'] = $this->Model_guru->DataAbsenGuruPerhariSMK($bulan_tahun);
+
+
+        $isi['content'] = 'Absensi/tampilan_absenGuru_per_hari';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function detail_absen_guru_hari_masuk($bulan_tahun)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_guru->HeaderAbsenGuruPerhari($bulan_tahun);
+        $isi['data'] = $this->Model_guru->DataAbsenGuruPerhari($bulan_tahun);
+
+
+        $isi['content'] = 'Absensi/tampilan_detail_absenGuru_per_hari';
+        $this->load->view('templates/header');
+        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
     public function print_absen_guru_perbulan($bulan_tahun)
     {
         $this->Model_keamanan->getKeamanan();
@@ -128,12 +154,36 @@ class Dashboard extends CI_Controller
     public function keterangan_tambahan()
     {
         $this->Model_keamanan->getKeamanan();
+        $isi['guru'] = $this->Model_guru->DataGuruFull();
+
         $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahan();
 
         $isi['content'] = 'Absensi/tampilan_keterangan_tambahan';
         $this->load->view('templates/header');
         $this->load->view('tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
+    }
+
+    public function upload_keterangan_tambahan()
+    {
+        $kode = $this->input->post('kode');
+        $nama_keterangan = $this->input->post('nama_keterangan');
+
+        $data = array(
+            'id_keterangan'    => rand(100000, 999999),
+            'kode_guru'         => $kode,
+            'nama_keterangan'   => $nama_keterangan
+        );
+
+        $data2 = array(
+            'id_absenGuru'    => rand(100000, 999999),
+            'kode'              => $kode,
+            'ket'               => $nama_keterangan
+        );
+
+        $this->db->insert('keterangan_tambahan', $data);
+        $this->db->insert(' absenguru', $data2);
+        redirect('Dashboard/keterangan_tambahan');
     }
 
     public function masalah_absen()
@@ -162,6 +212,12 @@ class Dashboard extends CI_Controller
         $this->load->view('masalah_absen/berhasil_absen');
     }
 
+    public function delete_absen_guru($id_absenGuru)
+    {
+        $this->db->where('id_absenGuru ', $id_absenGuru);
+        $this->db->delete('absenguru');
+        redirect('Dashboard/data_absen_guru_perbulan');
+    }
 
     public function logout()
     {

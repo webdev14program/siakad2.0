@@ -1,7 +1,7 @@
 <div class="alert alert-success" role="alert">
     <h4 class="text-center font-weight-bold text-uppercase">absen guru per hari <br> <?= $header['bulan'] ?></h4>
 </div>
-<a class="btn btn-success btn-sm text-uppercase" href="<?= base_url() ?>Dashboard_smk/data_absen_guru_perbulan">Kembali</a>
+<a class="btn btn-success btn-sm text-uppercase" href="<?= base_url() ?>Dashboard_sma/data_absen_guru_perbulan">Kembali</a>
 <div class="row mt-3">
     <div class="col-md">
         <div class="card">
