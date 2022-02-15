@@ -146,7 +146,7 @@ FROM `absenguru`
                 ON guru.jenjang=jenjang.kode_jenjang
                 WHERE jenjang.kode_jenjang='SD'
                 GROUP by bulan_tahun,guru.jenjang  
-                ORDER BY `tahun` ASC;";
+               ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -160,7 +160,7 @@ FROM `absenguru`
                 ON guru.jenjang=jenjang.kode_jenjang
                 WHERE jenjang.kode_jenjang='SMP'
                 GROUP by bulan_tahun,guru.jenjang  
-                ORDER BY `tahun` ASC;";
+                ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -174,7 +174,7 @@ FROM `absenguru`
                 ON guru.jenjang=jenjang.kode_jenjang
                 WHERE jenjang.kode_jenjang='SMA'
                 GROUP by bulan_tahun,guru.jenjang  
-                ORDER BY `tahun` ASC;";
+                ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -188,7 +188,7 @@ FROM `absenguru`
                 ON guru.jenjang=jenjang.kode_jenjang
                 WHERE jenjang.kode_jenjang='SMK'
                 GROUP by bulan_tahun,guru.jenjang  
-                ORDER BY `tahun` ASC;";
+                ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -356,27 +356,27 @@ jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* 
 
     public function PrintHeaderGuruPerHari($hari_bulan_tahun)
     {
-        $sql = "SELECT guru.id,guru.nama,  guru.jenjang,concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam, absenguru.ket, 
-                day(absenguru.date) AS hari,monthname(absenguru.date) AS bulan,YEAR(absenguru.date) as tahun,
-                concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal,
-                if(concat(hour(absenguru.date),':',minute(absenguru.date))<'6:42' AND concat(hour(absenguru.date),':',minute(absenguru.date)) >'11.00' ,'Sukses Absen','Terlambat') AS status_absen_masuk,
-                if(hour(absenguru.date)>9  ,'Terlambat Lebih',null) AS status_lewat_absen_masuk
-                FROM `absenguru`
-                INNER JOIN guru
-                ON absenguru.kode=guru.kode
-                WHERE absenguru.ket='Masuk' AND concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) ='$hari_bulan_tahun';";
+        $sql = "SELECT guru.jenjang,absenguru.ket,day(absenguru.date) AS hari,monthname(absenguru.date) AS bulan, YEAR(absenguru.date) AS tahun,
+concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal
+FROM `absenguru`
+INNER JOIN guru
+ON absenguru.kode=guru.kode
+WHERE absenguru.ket='Masuk' AND concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) ='$hari_bulan_tahun'
+GROUP BY tanggal
+ORDER BY absenguru.date DESC;";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
     public function PrintDataGuruPerHari($hari_bulan_tahun)
     {
+        $terlambat_lebih = '<h6 class="text-danger font-weight-bold">absen masuk > jam 8</h6>';
+        $terlambat = '<h6 class="text-danger font-weight-bold">Terlambat</h6>';
+        $masuk = '<h6 class="text-success font-weight-bold">Sukses Absen</h6>';
         $sql = "SELECT guru.id,guru.nama, guru.jenjang, concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam, absenguru.ket, 
                 day(absenguru.date) AS hari,monthname(absenguru.date) AS bulan,YEAR(absenguru.date) as tahun,
                 concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal,
-                if(concat(hour(absenguru.date),':',minute(absenguru.date))<'6:42' OR
-                concat(hour(absenguru.date),':',minute(absenguru.date))<='6:9' AND 
-                concat(hour(absenguru.date),':',minute(absenguru.date)) >'11.00' ,'Sukses Absen','Terlambat') AS status_absen_masuk,
-                if(hour(absenguru.date)>=9  ,'absen masuk > jam 9',null) AS status_lewat_absen_masuk
+                if(HOUR(absenguru.date)<7 AND minute(absenguru.date)<59  OR minute(absenguru.date)<=5 ,'$masuk','$terlambat') AS status_absen_masuk,
+                if(hour(absenguru.date)>=8  ,'$terlambat_lebih',null) AS status_lewat_absen_masuk
                 FROM `absenguru`
                 INNER JOIN guru
                 ON absenguru.kode=guru.kode
@@ -403,10 +403,12 @@ jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* 
 
     public function PrintDataGuruPerHariKeluar($hari_bulan_tahun)
     {
+        $belum_keluar = '<h6 class="text-danger font-weight-bold">Absen Keluar < Jam 12</h6>';
+        $sukses_keluar = '<h6 class="text-success font-weight-bold">Sukses Absen Keluar</h6>';
         $sql = "SELECT guru.id,guru.nama,guru.jenjang,day(absenguru.date) AS hari,monthname(absenguru.date) AS bulan,YEAR(absenguru.date) as tahun,
             concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam,absenguru.ket,
             concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal,
-            IF(hour(absenguru.date)<=12 ,'Absen Keluar < Jam 12', 'Sukses Absen Keluar') as status_keluar
+            IF(hour(absenguru.date)<=12 ,'$belum_keluar', '$sukses_keluar') as status_keluar
             FROM `absenguru`
             INNER JOIN guru
             ON absenguru.kode=guru.kode
