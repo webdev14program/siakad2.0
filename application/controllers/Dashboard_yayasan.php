@@ -99,9 +99,9 @@ class Dashboard_yayasan extends CI_Controller
         $this->Model_keamanan->getKeamanan();
         $isi['absen_guru_perbulan'] = $this->Model_guru->AbsenGuruPerbulan();
 
-        $isi['content'] = 'Absensi/tampilan_absenGuru_per_bulan';
+        $isi['content'] = 'Yayasan/Absensi/tampilan_absenGuru_per_bulan';
         $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('Yayasan/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -112,9 +112,9 @@ class Dashboard_yayasan extends CI_Controller
         $isi['data'] = $this->Model_guru->DataAbsenGuruPerhariSMK($bulan_tahun);
 
 
-        $isi['content'] = 'Absensi/tampilan_absenGuru_per_hari';
+        $isi['content'] = 'Yayasan/Absensi/tampilan_absenGuru_per_hari';
         $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('Yayasan/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 

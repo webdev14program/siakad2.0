@@ -54,7 +54,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/data_absen_guru_perbulan">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_yayasan/data_absen_guru_perbulan">
                 <i class="fas fa-user-secret"></i>
                 <span>Guru</span></a>
         </li>
