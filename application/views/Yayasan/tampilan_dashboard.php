@@ -64,7 +64,7 @@
                 <span>Siswa</span></a>
         </li> -->
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/keterangan_tambahan">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_yayasan/keterangan_tambahan">
                 <i class="fas fa-calendar-week"></i>
                 <span>Keterangan Tambahan</span></a>
         </li>

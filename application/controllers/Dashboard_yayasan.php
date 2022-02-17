@@ -158,9 +158,9 @@ class Dashboard_yayasan extends CI_Controller
 
         $isi['keterangan_tambahan'] = $this->Model_guru->keterangan_tambahan();
 
-        $isi['content'] = 'Absensi/tampilan_keterangan_tambahan';
+        $isi['content'] = 'Yayasan/Absensi/tampilan_keterangan_tambahan';
         $this->load->view('templates/header');
-        $this->load->view('tampilan_dashboard', $isi);
+        $this->load->view('Yayasan/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
