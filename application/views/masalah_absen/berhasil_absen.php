@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>SIAKAD PERGURUAN TUNAS HARAPAN</title>
+    <link rel="icon" href="https://smkth-jakbar.com/assets/images/logo.png">
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>assets/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,7 +37,7 @@
 
                             <div class="col-md">
                                 <div class="alert alert-success" role="alert">
-                                    <h4 class="alert-heading">Absen Berhasil</h4>
+                                    <h4 class="alert-heading text-center font-weight-bold">ABSEN SUKSES</h4>
                                 </div>
                             </div>
                         </div>

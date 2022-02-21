@@ -196,20 +196,40 @@ class Dashboard extends CI_Controller
         $temp = rand(1000000, 9999999);
         $kode_guru = $this->input->post('kode_guru');
         $status = $this->input->post('status');
+        $ip_addrs = $this->input->ip_address();
+        // $mac = $this->agent->mac_address();
+        // $MAC = exec('getmac');
+        // $MAC = strtok($MAC, ' ');
 
-        $data = array(
-            'id_absenGuru' => $temp,
-            'kode' => $kode_guru,
-            'ket' => $status,
-        );
+        date_default_timezone_set("Asia/Jakarta");
+        $tanggl = date('Y-m-d');
 
-        $this->db->insert('absenguru', $data);
-        redirect('Dashboard/berhasil_basen');
+        $sql = $this->db->query("SELECT  * FROM `absenguru`  
+WHERE ket='$status' AND tanggal='$tanggl' AND kode='$kode_guru';");
+        $cek_absen = $sql->num_rows();
+        if ($cek_absen > 0) {
+            redirect('Dashboard/gagal_absen');
+        } else {
+            $data = array(
+                'id_absenGuru' => $temp,
+                'kode' => $kode_guru,
+                'tanggal' => $tanggl,
+                'ket' => $status,
+                'mac_address' => $ip_addrs,
+
+            );
+            $this->db->insert('absenguru', $data);
+            redirect('Dashboard/berhasil_basen');
+        }
     }
 
     public function berhasil_basen()
     {
         $this->load->view('masalah_absen/berhasil_absen');
+    }
+    public function gagal_absen()
+    {
+        $this->load->view('masalah_absen/gagal_absen');
     }
 
     public function delete_absen_guru($id_absenGuru)

@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
-
+    <title>SIAKAD PERGURUAN TUNAS HARAPAN</title>
+    <link rel="icon" href="https://smkth-jakbar.com/assets/images/logo.png">
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>assets/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -36,6 +36,15 @@
 
                             <div class="col-md">
                                 <div class="p-5">
+                                    <h5 class="text-center font-weight-bold">
+                                        <h5 class="text-center text-uppercase font-weight-bold">
+                                            <?php
+                                            date_default_timezone_set("Asia/Jakarta");
+                                            echo "Tanggal " . date("Y-m-d");
+                                            ?>
+                                        </h5>
+                                        <?= $this->session->flashdata('pesan'); ?>
+                                    </h5>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4 ">JIKA MASALAH ABSERN QRCODE</h1>
                                     </div>
