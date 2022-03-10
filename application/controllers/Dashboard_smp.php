@@ -106,11 +106,13 @@ class Dashboard_smp extends CI_Controller
     {
         $kode = $this->input->post('kode');
         $nama_keterangan = $this->input->post('nama_keterangan');
+        $detail_keterangan = $this->input->post('detail_keterangan');
 
         $data = array(
             'id_keterangan'    => rand(100000, 999999),
             'kode_guru'         => $kode,
-            'nama_keterangan'   => $nama_keterangan
+            'nama_keterangan'   => $nama_keterangan,
+            'detail_keterangan' => $detail_keterangan
         );
 
         $data2 = array(

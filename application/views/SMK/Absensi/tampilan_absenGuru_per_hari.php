@@ -15,7 +15,7 @@
                                 <th scope="col">Jenjang</th>
                                 <th scope="col">perhari (masuk)</th>
                                 <th scope="col">perhari (keluar)</th>
-
+                                <th scope="col">absen link</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +34,9 @@
                                     <td class="text-center text-uppercase">
                                         <a class="btn btn-warning btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_keluar/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a>
                                         <!-- <a class="btn btn-primary btn-sm disabled" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_masuk/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-search"></i> Detail</a> -->
+                                    </td>
+                                    <td class="text-center text-uppercase">
+                                        <a class="btn btn-success btn-sm" href="<?= base_url() ?>Dashboard_smk/print_absen_guru_hari_link/<?= $row['tanggal_bulan_tahun'] ?>" target="_blank"><i class="fas fa-print"></i> print</a>
                                     </td>
                             </tr>
                         <?php } ?>

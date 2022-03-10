@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>STATUS ABSEN</td>
-                        <td class="font-weight-bold">: ABSENSI <?= $header['ket'] ?></td>
+                        <td class="font-weight-bold">: ABSENSI MENGGUNAKAN LINK</td>
                     </tr>
                 </tbody>
             </table>
@@ -51,10 +51,9 @@
                     <th scope="col">#</th>
                     <th scope="col">id guru</th>
                     <th scope="col">nama guru</th>
-                    <th scope="col">Jam</th>
-                    <th scope="col">status absen</th>
-                    <th scope="col">status lewat terlambat</th>
-                    <th scope="col">status lokasi absent</th>
+                    <th scope="col">STATUS ABSEN</th>
+                    <th scope="col">KETERANGAN ABSEN</th>
+                    <th scope="col">WAKTU</th>
                 </tr>
             </thead>
             <tbody class="text-uppercase font-weight-bold">
@@ -66,10 +65,9 @@
                         <td class="text-center"><?php echo $no++; ?></td>
                         <td class=" text-center"><?= $row['id']; ?></td>
                         <td class="text-center"><?= $row['nama']; ?></td>
-                        <td class="text-center "><?= $row['waktu']; ?></td>
-                        <td class="text-center "><?= $row['status_absenmasuk']; ?></td>
-                        <td class="text-center "><?= $row['status_absenmasuk_lebih']; ?></td>
-                        <td class="text-center "><?= $row['lokasi_absen']; ?></td>
+                        <td class="text-center"><?= $row['ket']; ?></td>
+                        <td class="text-center text-danger">MENGGUNAKAN LINK</td>
+                        <td class="text-center"><?= $row['date']; ?></td>
                 </tr>
             <?php } ?>
             </tbody>

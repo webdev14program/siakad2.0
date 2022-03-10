@@ -2,9 +2,13 @@
     <h4 class="text-center font-weight-bold text-uppercase">Keterangan Tambahan</h4>
 </div>
 
-<button type="button" class="btn btn-primary text-uppercase" data-toggle="modal" data-target="#exampleModal">
-    tambah keterangan absen
-</button>
+<div class="card">
+    <div class="card-body">
+        <button type="button" class="btn btn-primary btn-sm text-uppercase font-weight-bold" data-toggle="modal" data-target="#exampleModal">
+            <i class="fas fa-plus-square"></i> tambah keterangan absen
+        </button>
+    </div>
+</div>
 
 <div class="row mt-3">
     <div class="col-md">
@@ -20,6 +24,7 @@
                                 <th scope="col">Nama Guru</th>
                                 <th scope="col">jenjang</th>
                                 <th scope="col">keterangan</th>
+                                <th scope="col">detail keterangan</th>
                                 <th scope="col">tanggal</th>
                             </tr>
                         </thead>
@@ -32,9 +37,10 @@
                                     <td class="text-center"><?php echo $no++; ?></td>
                                     <td class=" text-center font-weight-bold"><?= $row['id']; ?></td>
                                     <td class=" text-center"><?= $row['kode']; ?></td>
-                                    <td class=" text-center font-weight-bold"><?= $row['nama']; ?></td>
+                                    <td class=" text-center font-weight-bold text-uppercase"><?= $row['nama']; ?></td>
                                     <td class=" text-center"><?= $row['jenjang']; ?></td>
                                     <td class=" text-center font-weight-bold"><?= $row['nama_keterangan']; ?></td>
+                                    <td class=" text-center font-weight-bold"><?= $row['detail_keterangan']; ?></td>
                                     <td class=" text-center font-weight-bold"><?= $row['hari']; ?> <?= $row['bulan']; ?> <?= $row['tahun']; ?></td>
                             </tr>
                         <?php } ?>
@@ -60,7 +66,7 @@
                     <select class="form-control" name="kode">
                         <OPtion class="bg-info text-white" disabled>PILIH GURU</OPtion>
                         <?php foreach ($guru as $row) { ?>
-                            <option value="<?= $row['kode']; ?>"><?= $row['id']; ?> | <?= $row['kode']; ?> | <?= $row['nama']; ?> </option>
+                            <option value="<?= $row['kode']; ?>">| <?= $row['id']; ?> | <?= $row['nama']; ?> | </option>
                         <?php } ?>
                     </select>
                 </div>
@@ -68,8 +74,13 @@
                     <label>STATUS TIDAK MASUK</label>
                     <select class="form-control" name="nama_keterangan">
                         <option value="Sakit">SAKIT</option>
-                        <option value="Ijin">IJIN</option>
+                        <option value="IJIN DINAS">IJIN DINAS</option>
+                        <option value="IJIN NON DINAS">IJIN NON DINAS</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label class="text-uppercase">Detail Keterangan Tambahan</label>
+                    <input type="text" class="form-control" name="detail_keterangan">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

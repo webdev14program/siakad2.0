@@ -188,7 +188,8 @@ class Dashboard extends CI_Controller
 
     public function masalah_absen()
     {
-        $this->load->view('masalah_absen/masalah_absen');
+        $isi['guru'] = $this->Model_guru->dataGuruLink();
+        $this->load->view('masalah_absen/masalah_absen', $isi);
     }
 
     public function simpan_masalah_absen()
@@ -203,10 +204,13 @@ class Dashboard extends CI_Controller
 
         date_default_timezone_set("Asia/Jakarta");
         $tanggl = date('Y-m-d');
+        $waktu = date('H:m');
 
         $sql = $this->db->query("SELECT  * FROM `absenguru`  
-WHERE ket='$status' AND tanggal='$tanggl' AND kode='$kode_guru';");
+                WHERE ket='$status' AND tanggal='$tanggl' AND kode='$kode_guru';");
         $cek_absen = $sql->num_rows();
+
+
         if ($cek_absen > 0) {
             redirect('Dashboard/gagal_absen');
         } else {
@@ -214,6 +218,7 @@ WHERE ket='$status' AND tanggal='$tanggl' AND kode='$kode_guru';");
                 'id_absenGuru' => $temp,
                 'kode' => $kode_guru,
                 'tanggal' => $tanggl,
+                'waktu' => $waktu,
                 'ket' => $status,
                 'mac_address' => $ip_addrs,
 

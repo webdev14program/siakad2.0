@@ -53,6 +53,16 @@ class Model_guru extends CI_Model
         return $query->result_array();
     }
 
+    public function dataGuruLink()
+    {
+        $sql = "SELECT * FROM `guru`
+WHERE kode IN ('a4','a6','TU2','TU3','O');";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+
+
     public function DataGuruHeader($kode_jenjang)
     {
         $sql = "SELECT *,jenjang.jenjang AS nama_jenjang FROM `guru`
@@ -343,7 +353,7 @@ jenjang.jenjang AS nama_jenjang,jenjang.kode_jenjang AS kode_jenjang, jenjang.* 
                 COUNT(IF(concat(hour(absenguru.date),':',minute(absenguru.date))>'6:41' AND absenguru.ket='Masuk','Terlambat',NULL)) AS ket_terlambat,
                 COUNT(IF(hour(absenguru.date)>13 AND absenguru.ket='Keluar','Keluar',NULL)) AS ket_keluar,
                 COUNT(if(absenguru.ket='Sakit','Sakit',NULL)) AS ket_sakit,
-                COUNT(if(absenguru.ket='Ijin','Ijin',NULL)) AS ket_ijin
+                COUNT(if(absenguru.ket='IJIN DINAS' OR absenguru.ket='IJIN NON DINAS','Ijin',NULL)) AS ket_ijin
                 FROM `absenguru`
                 INNER JOIN guru
                 ON absenguru.kode=guru.kode
@@ -372,16 +382,30 @@ ORDER BY absenguru.date DESC;";
         $terlambat_lebih = '<h6 class="text-danger font-weight-bold">absen masuk > jam 8</h6>';
         $terlambat = '<h6 class="text-danger font-weight-bold">Terlambat</h6>';
         $masuk = '<h6 class="text-success font-weight-bold">Sukses Absen</h6>';
-        $sql = "SELECT guru.id,guru.nama, guru.jenjang, concat(hour(absenguru.date),':',minute(absenguru.date)) AS jam, absenguru.ket, 
-                day(absenguru.date) AS hari,monthname(absenguru.date) AS bulan,YEAR(absenguru.date) as tahun,
-                concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) AS tanggal,
-                if(HOUR(absenguru.date)<7 AND minute(absenguru.date)<59  OR minute(absenguru.date)<=5 ,'$masuk','$terlambat') AS status_absen_masuk,
-                if(hour(absenguru.date)>=8  ,'$terlambat_lebih',null) AS status_lewat_absen_masuk
-                FROM `absenguru`
-                INNER JOIN guru
+        $absen_sekolah = '<h6 class="text-success font-weight-bold">ABSEN DI SEKOLAH</h6>';
+        $absen_tidak_disekolah = '<h6 class="text-danger font-weight-bold">ABSEN TIDAK DI SEKOLAH</h6>';
+        $sql = "SELECT guru.id,guru.nama, absenguru.waktu,absenguru.tanggal,absenguru.date,
+                IF (absenguru.waktu<'07:05','$masuk','$terlambat') AS status_absenmasuk,
+                IF(absenguru.waktu>'08:00','$terlambat_lebih',null) AS status_absenmasuk_lebih,
+                absenguru.latitude,absenguru.longitude,
+                IF (absenguru.latitude='-6.15522' AND absenguru.longitude='106.7721828','$absen_sekolah','$absen_tidak_disekolah') AS lokasi_absen
+                FROM `absenguru` 
+                INNER join guru
                 ON absenguru.kode=guru.kode
                 WHERE absenguru.ket='Masuk' AND concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) ='$hari_bulan_tahun'
                 ORDER BY absenguru.date DESC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function PrintDataGuruLink($hari_bulan_tahun)
+    {
+        $sql = "SELECT guru.id,guru.nama, absenguru.ket, absenguru.date FROM `absenguru`
+INNER JOIN guru
+ON absenguru.kode = guru.kode
+WHERE absenguru.mac_address NOT IN (0) AND concat(guru.jenjang,day(absenguru.date),monthname(absenguru.date),year(absenguru.date)) ='$hari_bulan_tahun'
+GROUP BY absenguru.kode , absenguru.ket
+ORDER BY absenguru.ket DESC;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -446,7 +470,7 @@ ORDER BY absenguru.date DESC;";
 
     public function keterangan_tambahanSMP()
     {
-        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.timestamp,
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.detail_keterangan,keterangan_tambahan.timestamp,
             day(keterangan_tambahan.timestamp) AS hari,monthname(keterangan_tambahan.timestamp) AS bulan, year(keterangan_tambahan.timestamp) AS tahun
             FROM `keterangan_tambahan`
             INNER JOIN guru
@@ -471,13 +495,13 @@ ORDER BY absenguru.date DESC;";
 
     public function keterangan_tambahanSMK()
     {
-        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.timestamp,
+        $sql = "SELECT guru.id,guru.kode,guru.nama,guru.jenjang,keterangan_tambahan.nama_keterangan,keterangan_tambahan.detail_keterangan,keterangan_tambahan.timestamp,
             day(keterangan_tambahan.timestamp) AS hari,monthname(keterangan_tambahan.timestamp) AS bulan, year(keterangan_tambahan.timestamp) AS tahun
             FROM `keterangan_tambahan`
             INNER JOIN guru
             ON keterangan_tambahan.kode_guru=guru.kode
             WHERE guru.jenjang='SMK'
-            ORDER BY keterangan_tambahan.timestamp DESC;";
+            ORDER BY keterangan_tambahan.timestamp DESC";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

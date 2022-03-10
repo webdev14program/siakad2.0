@@ -43,14 +43,27 @@
                                             echo "Tanggal " . date("Y-m-d");
                                             ?>
                                         </h5>
-                                        <?= $this->session->flashdata('pesan'); ?>
+                                        <h5 class="text-center text-uppercase font-weight-bold">
+                                            <?php
+                                            date_default_timezone_set("Asia/Jakarta");
+                                            echo "Jam  " . date("H:m");
+                                            ?>
+                                        </h5>
+                                        <!-- <h5 class="text-center text-uppercase font-weight-bold" id="location"> -->
+                                    </h5>
                                     </h5>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4 ">JIKA MASALAH ABSERN QRCODE</h1>
                                     </div>
                                     <form class="user" action="<?= base_url() ?>Dashboard/simpan_masalah_absen" method="POST">
                                         <div class="form-group">
-                                            <input type="text" class="form-control " name="kode_guru" placeholder="Masukan Kode Guru">
+                                            <label>GURU</label>
+                                            <select class="form-control" name="kode_guru">
+                                                <OPtion class="bg-info text-white" disabled>PILIH GURU</OPtion>
+                                                <?php foreach ($guru as $row) { ?>
+                                                    <option value="<?= $row['kode']; ?>">| <?= $row['nama']; ?> | </option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control" name="status">
@@ -75,14 +88,29 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>assets/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url() ?>assets/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="<?= base_url() ?>assets/Admin/js/sb-admin-2.min.js"></script>
+
+    <script>
+        var x = document.getElementById("location");
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
 
 </body>
 
